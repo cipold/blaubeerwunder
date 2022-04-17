@@ -1,0 +1,134 @@
+// Define variable defaults
+$primary: #3c1146;
+$secondary: #d4a8b4;
+
+// Then import Bootstrap an BootstrapVue SCSS files (order is important)
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "node_modules/bootstrap-vue/src/index.scss";
+
+@font-face {
+  font-family: "SendFlowers";
+  src: url("assets/SendFlowers-Regular.ttf");
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  background: radial-gradient(
+      circle at 100% 50%,
+      transparent 20%,
+      rgba(255, 255, 255, 0.3) 21%,
+      rgba(255, 255, 255, 0.3) 34%,
+      transparent 35%,
+      transparent
+    ),
+    radial-gradient(
+        circle at 0% 50%,
+        transparent 20%,
+        rgba(255, 255, 255, 0.3) 21%,
+        rgba(255, 255, 255, 0.3) 34%,
+        transparent 35%,
+        transparent
+      )
+      0 -50px;
+  background-color: var(--secondary) !important;
+  background-size: 75px 100px;
+  overflow-y: scroll;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #3e3e3e;
+  max-width: 440px;
+  margin: 0 auto;
+  background-color: white;
+  min-height: 100vh;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  border-left: rgba($secondary, 1) solid 5px;
+  border-right: rgba($secondary, 1) solid 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+nav {
+  font-family: "SendFlowers", cursive;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  border-top: rgba($secondary, 0.3) solid 1px;
+  border-bottom: rgba($secondary, 0.3) solid 1px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+
+  a {
+    font-weight: bold;
+    color: var(--secondary);
+    margin: 0 10px;
+
+    &.router-link-exact-active {
+      color: var(--primary);
+    }
+  }
+}
+
+.main-title {
+  font-family: "SendFlowers", cursive;
+  font-weight: bold;
+  color: var(--primary);
+  text-align: center;
+  text-shadow: 2px 2px var(--secondary);
+
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.header-image {
+  display: block;
+  height: 100px;
+  margin: 0 auto 20px auto;
+}
+
+.part {
+  font-family: "SendFlowers", cursive;
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+.ingredients {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.divider {
+  margin: 25px auto;
+  width: 80%;
+  height: 4px;
+  background-color: rgba($secondary, 0.3);
+  border-radius: 2px;
+}
+
+.footer {
+  line-height: 50px;
+  margin-top: 25px;
+}
+
+.card-header-title {
+  font-family: "SendFlowers", cursive;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+}

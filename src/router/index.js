@@ -1,6 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import PansView from "../views/PansView.vue";
+import IngredientsView from "../views/IngredientsView.vue";
+import ShoppingListView from "../views/ShoppingListView.vue";
+import PreparationView from "../views/PreparationView.vue";
+import DebugView from "../views/DebugView.vue";
 
 Vue.use(VueRouter);
 
@@ -9,15 +14,50 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
+    meta: {},
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/pans",
+    name: "pans",
+    component: PansView,
+    meta: {
+      title: "Formen",
+    },
+  },
+  {
+    path: "/ingredients",
+    name: "ingredients",
+    component: IngredientsView,
+    meta: {
+      nav: "Zutaten",
+      title: "Zutaten",
+    },
+  },
+  {
+    path: "/shopping-list",
+    name: "shopping-list",
+    component: ShoppingListView,
+    meta: {
+      nav: "Einkaufsliste",
+      title: "Einkaufsliste",
+    },
+  },
+  {
+    path: "/preparation",
+    name: "preparation",
+    component: PreparationView,
+    meta: {
+      nav: "Zubereitung",
+      title: "Zubereitung",
+    },
+  },
+  {
+    path: "/debug",
+    name: "debug",
+    component: DebugView,
+    meta: {
+      title: "Debug",
+    },
   },
 ];
 
