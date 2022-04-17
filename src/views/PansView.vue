@@ -26,7 +26,7 @@
             <b-link
               class="text-muted ml-auto align-self-center"
               v-if="pans.length > 1"
-              @click="removePan(index)"
+              @click="remove(index)"
               title="Form entfernen"
             >
               <BIconTrash></BIconTrash>
@@ -72,8 +72,9 @@
         </b-list-group-item>
       </b-list-group>
       <b-card-footer>
-        <b-link class="text-muted small" @click="newPan">
-          <BIconPlusCircle></BIconPlusCircle> weitere Form hinzufügen
+        <b-link class="text-muted small" @click="add">
+          <BIconPlusCircle></BIconPlusCircle>
+          weitere Form hinzufügen
         </b-link>
       </b-card-footer>
     </b-card>
@@ -81,15 +82,18 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "PansView",
+  metaInfo: {
+    title: "Formen",
+  },
   computed: {
-    ...mapGetters(["pans"]),
+    ...mapState("pans", ["pans"]),
   },
   methods: {
-    ...mapActions(["newPan", "removePan"]),
+    ...mapActions("pans", ["add", "remove"]),
   },
 };
 </script>

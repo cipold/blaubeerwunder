@@ -52,14 +52,22 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import PanSelect from "@/components/PanSelect";
 
 export default {
   name: "IngredientsView",
+  metaInfo: {
+    title: "Zutaten",
+  },
   components: { PanSelect },
   computed: {
-    ...mapGetters(["pans", "selectedPan", "recipePan", "recipeIngredients"]),
+    ...mapState("pans", ["pans"]),
+    ...mapState("recipe", {
+      recipePan: "pan",
+      recipeIngredients: "ingredients",
+    }),
+    ...mapGetters("pans", ["selectedPan"]),
     parts() {
       return this.recipeIngredients.reduce((parts, ingredient) => {
         const part = ingredient.part;

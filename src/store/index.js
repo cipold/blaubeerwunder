@@ -9,7 +9,11 @@ export default new Vuex.Store({
   state: {},
   getters: {},
   mutations: {},
-  actions: {},
+  actions: {
+    initialize() {
+      this.dispatch("pans/initialize", undefined, { root: true });
+    },
+  },
   modules: {
     pans,
     recipe,

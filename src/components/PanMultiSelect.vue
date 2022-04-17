@@ -16,7 +16,7 @@
           v-for="(pan, index) in pans"
           :key="`pan-${index}`"
           button
-          @click="togglePanActive(index)"
+          @click="toggle(index)"
         >
           <div class="d-flex">
             <BIconCheckCircleFill
@@ -49,15 +49,16 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
   name: "PanMultiSelect",
   computed: {
-    ...mapGetters(["pans", "activePans"]),
+    ...mapState("pans", ["pans"]),
+    ...mapGetters("pans", ["activePans"]),
   },
   methods: {
-    ...mapActions(["togglePanActive"]),
+    ...mapActions("pans", ["toggle"]),
   },
 };
 </script>

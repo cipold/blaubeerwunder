@@ -1,65 +1,67 @@
-const state = {
-  pans: [
-    {
-      label: "Kleine Form",
-      diameter: 16.5,
-      height: 8.0,
-      active: true,
-    },
-    {
-      label: "Große Form",
-      diameter: 24.5,
-      height: 8.0,
-      active: false,
-    },
-  ],
-  selectedPan: 0,
-};
-const getters = {
-  pans: (state) => state.pans,
-  selectedPan: (state) => state.pans[state.selectedPan],
-  activePans: (state) => state.pans.filter((pan) => pan.active),
-};
-const mutations = {
-  setPans: (state, pans) => (state.pans = pans),
-  newPan: (state) =>
-    state.pans.push({
-      label: "Form",
-      diameter: 20.0,
-      height: 8.0,
-      active: false,
-    }),
-  removePan: (state, index) => {
-    if (index <= state.selectedPan) {
-      state.selectedPan--;
-    }
-    state.pans.splice(index, 1);
-  },
-  setSelectedPan: (state, index) => (state.selectedPan = index),
-  panActive: (state, index) =>
-    (state.pans[index].active = !state.pans[index].active),
-};
-const actions = {
-  setPans({ commit }, pans) {
-    commit("setPans", pans);
-  },
-  newPan({ commit }) {
-    commit("newPan");
-  },
-  removePan({ commit }, index) {
-    commit("removePan", index);
-  },
-  setSelectedPan({ commit }, index) {
-    commit("setSelectedPan", index);
-  },
-  togglePanActive({ commit }, index) {
-    commit("panActive", index);
-  },
-};
-
 export default {
-  state,
-  getters,
-  mutations,
-  actions,
+  namespaced: true,
+  state: {
+    pans: [],
+    selected: 0,
+  },
+  getters: {
+    selectedPan: (state) => state.pans[state.selected],
+    activePans: (state) => state.pans.filter((pan) => pan.active),
+  },
+  mutations: {
+    set: (state, pans) => (state.pans = pans),
+    add: (state) =>
+      state.pans.push({
+        label: "Neue Form",
+        diameter: 20.0,
+        height: 8.0,
+        active: false,
+      }),
+    remove: (state, index) => {
+      state.pans.splice(index, 1);
+
+      if (index < state.selected) {
+        state.selected--;
+      }
+      state.selected = Math.max(
+        Math.min(state.selected, state.pans.length - 1),
+        0
+      );
+    },
+    select: (state, index) => (state.selected = index),
+    toggle: (state, index) =>
+      (state.pans[index].active = !state.pans[index].active),
+  },
+  actions: {
+    initialize({ commit }) {
+      commit("set", [
+        {
+          label: "Kleine Form",
+          diameter: 16.5,
+          height: 8.0,
+          active: true,
+        },
+        {
+          label: "Große Form",
+          diameter: 24.5,
+          height: 8.0,
+          active: false,
+        },
+      ]);
+
+      commit("select", 0);
+    },
+    add({ commit }) {
+      commit("add");
+    },
+    remove({ commit }, index) {
+      commit("remove", index);
+    },
+    select({ commit }, index) {
+      commit("select", index);
+    },
+    toggle({ commit }, index) {
+      commit("toggle", index);
+    },
+  },
 };

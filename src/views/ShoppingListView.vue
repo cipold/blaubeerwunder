@@ -41,16 +41,23 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import PanMultiSelect from "@/components/PanMultiSelect";
 
 export default {
   name: "ShoppingListView",
+  metaInfo: {
+    title: "Einkaufsliste",
+  },
   components: {
     PanMultiSelect,
   },
   computed: {
-    ...mapGetters(["activePans", "recipePan", "recipeIngredients"]),
+    ...mapState("recipe", {
+      recipePan: "pan",
+      recipeIngredients: "ingredients",
+    }),
+    ...mapGetters("pans", ["activePans"]),
     shoppingList() {
       return this.recipeIngredients.reduce((parts, ingredient) => {
         const section = ingredient.store;

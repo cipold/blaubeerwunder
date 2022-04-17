@@ -47,7 +47,7 @@
             :key="`pan-${index}`"
             button
             @click="
-              setSelectedPan(index);
+              select(index);
               $bvModal.hide('modal-pans');
             "
           >
@@ -71,15 +71,16 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
   name: "PanSelect",
   computed: {
-    ...mapGetters(["pans", "selectedPan"]),
+    ...mapState("pans", ["pans"]),
+    ...mapGetters("pans", ["selectedPan"]),
   },
   methods: {
-    ...mapActions(["setSelectedPan"]),
+    ...mapActions("pans", ["select"]),
   },
 };
 </script>

@@ -3,13 +3,14 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
-
+import VueMeta from "vue-meta";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
-import "./app.scss";
-
+Vue.use(VueMeta);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+
+import "./app.scss";
 
 Vue.config.productionTip = false;
 

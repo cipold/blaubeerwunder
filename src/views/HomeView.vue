@@ -16,8 +16,8 @@
       </template>
       <p class="mb-0">
         Passe das Rezept auf genau die
-        <router-link to="pans">Formen</router-link> an, die du verwenden
-        möchtest.
+        <router-link to="pans">Formen</router-link>
+        an, die du verwenden möchtest.
       </p>
     </b-media>
 
@@ -32,7 +32,8 @@
       </template>
       <p class="mb-0">
         Plane die Mengen der
-        <router-link to="ingredients">Zutaten</router-link> für deine Formen.
+        <router-link to="ingredients">Zutaten</router-link>
+        für deine Formen.
       </p>
     </b-media>
 
@@ -47,8 +48,8 @@
       </template>
       <p class="mb-0">
         Erstelle deine
-        <router-link to="shopping-list">Einkaufsliste</router-link> mit genau
-        den Mengen, die du für deine Formen brauchst.
+        <router-link to="shopping-list">Einkaufsliste</router-link>
+        mit genau den Mengen, die du für deine Formen brauchst.
       </p>
     </b-media>
 
@@ -69,3 +70,20 @@
     </b-media>
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  name: "HomeView",
+  metaInfo() {
+    return {
+      title: this.recipeName,
+      titleTemplate: null,
+    };
+  },
+  computed: {
+    ...mapState("recipe", { recipeName: "name" }),
+  },
+};
+</script>
