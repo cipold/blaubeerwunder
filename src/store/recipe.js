@@ -1,3 +1,7 @@
+// TODO read recipe from JSON file
+// TODO automatically inject checked: false
+// TODO persist checked state
+
 export default {
   namespaced: true,
   state: {

@@ -34,38 +34,44 @@
           </div>
           <b-row class="my-1">
             <b-col cols="3">
-              <label :for="`name-${index}`">Name:</label>
+              <label>Name:</label>
             </b-col>
             <b-col cols="9">
               <b-input
                 :id="`name-${index}`"
                 type="text"
-                v-model="pan.label"
+                :value="pan.label"
                 size="sm"
+                @input="input(index, 'label', $event)"
               ></b-input>
             </b-col>
           </b-row>
           <b-row class="my-1">
             <b-col cols="3">
-              <label :for="`diameter-${index}`">Breite:</label>
+              <label>Breite:</label>
             </b-col>
             <b-col cols="9">
               <b-input-group append="cm" size="sm">
                 <b-input
                   :id="`diameter-${index}`"
                   type="number"
-                  v-model="pan.diameter"
+                  @input="input(index, 'diameter', $event)"
+                  :value="pan.diameter"
                 ></b-input>
               </b-input-group>
             </b-col>
           </b-row>
           <b-row class="my-1">
             <b-col cols="3">
-              <label :for="`height-${index}`">Höhe:</label>
+              <label>Höhe:</label>
             </b-col>
             <b-col cols="9">
               <b-input-group :id="`height-${index}`" append="cm" size="sm">
-                <b-input type="number" v-model="pan.height"></b-input>
+                <b-input
+                  type="number"
+                  :value="pan.height"
+                  @input="input(index, 'height', $event)"
+                ></b-input>
               </b-input-group>
             </b-col>
           </b-row>
@@ -78,6 +84,16 @@
         </b-link>
       </b-card-footer>
     </b-card>
+    <div class="d-flex">
+      <b-button
+        class="ml-auto text-muted"
+        variant="light"
+        size="sm"
+        @click="reset()"
+      >
+        Zurücksetzen
+      </b-button>
+    </div>
   </div>
 </template>
 
@@ -93,7 +109,10 @@ export default {
     ...mapState("pans", ["pans"]),
   },
   methods: {
-    ...mapActions("pans", ["add", "remove"]),
+    ...mapActions("pans", ["add", "remove", "update", "reset"]),
+    input(index, key, value) {
+      this.update({ index, key, value });
+    },
   },
 };
 </script>

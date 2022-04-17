@@ -37,8 +37,8 @@ export default {
   computed: {
     ...mapState("recipe", { recipeName: "name" }),
   },
-  beforeCreate() {
-    this.$store.dispatch("initialize");
-  },
 };
+
+// TODO improve app icon (remove cake bottom, make fit into circle)
+// TODO add info page referencing open source content
 </script>

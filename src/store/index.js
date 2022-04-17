@@ -6,16 +6,20 @@ import recipe from "./recipe";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: process.env.NODE_ENV !== "production",
   state: {},
   getters: {},
   mutations: {},
-  actions: {
-    initialize() {
-      this.dispatch("pans/initialize", undefined, { root: true });
-    },
-  },
+  actions: {},
   modules: {
     pans,
     recipe,
   },
+  plugins: [
+    (store) => {
+      store.subscribe((mutation, { pans }) => {
+        window.localStorage.setItem("vuex/pans", JSON.stringify(pans));
+      });
+    },
+  ],
 });
