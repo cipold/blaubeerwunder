@@ -120,33 +120,10 @@ export default {
               }
               const addsToIngredient =
                 ingredientsByPart[part.part][ingredient.addsTo];
-              if (
-                addsToIngredient.scalesWith !== originalIngredient.scalesWith
-              ) {
-                console.debug(
-                  "Scaling of ingredient '" +
-                    addsToIngredient.name +
-                    "' (" +
-                    addsToIngredient.scalesWith +
-                    ") is not consistent with scaling of ingredient '" +
-                    originalIngredient.name +
-                    "' (" +
-                    originalIngredient.scalesWith +
-                    ") in part '" +
-                    part.part +
-                    "'"
-                );
-              }
               let amount = originalIngredient.amount;
               if (originalIngredient.unit !== "g") {
                 if (originalIngredient.amountInG) {
                   amount = originalIngredient.amountInG;
-                } else {
-                  console.debug(
-                    "Ingredient '" +
-                      originalIngredient.name +
-                      "' has no amountInG property and will be ignored"
-                  );
                 }
               }
               addsToIngredient.amount +=
