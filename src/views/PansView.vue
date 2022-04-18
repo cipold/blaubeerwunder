@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img alt="ingredients" src="../assets/pan.svg" class="header-image" />
+    <img alt="ingredients" src="../assets/icons/pan.svg" class="header-image" />
     <p class="mb-3 text-center">
       <em>
         Stelle hier ein, welche größe deine Formen haben und füge weitere Formen

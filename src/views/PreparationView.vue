@@ -2,7 +2,7 @@
   <div>
     <img
       alt="preparation"
-      src="../assets/preparation.svg"
+      src="../assets/icons/preparation.svg"
       class="header-image"
     />
     <p class="mb-3 text-center">
@@ -29,7 +29,7 @@
             <img
               v-if="instruction.icon === 'timer'"
               alt="instruction icon"
-              src="../assets/bell.svg"
+              src="../assets/icons/bell.svg"
               class="ml-auto align-self-center instruction-icon"
             />
           </div>
@@ -62,7 +62,11 @@
         </li>
       </ul>
     </div>
-    <img alt="preparation" src="../assets/cake.svg" class="header-image" />
+    <img
+      alt="preparation"
+      src="../assets/icons/cake.svg"
+      class="header-image"
+    />
   </div>
 </template>
 

@@ -11,9 +11,19 @@ $light: #fbedf1;
 @import "node_modules/bootstrap-vue/src/index.scss";
 
 @font-face {
-  font-family: "SendFlowers";
-  src: url("assets/SendFlowers-Regular.ttf");
+  font-family: "Send Flowers";
   font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url("assets/fonts/send-flowers-v1-latin-regular.eot");
+  src: local(""),
+    url("assets/fonts/send-flowers-v1-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/send-flowers-v1-latin-regular.woff2") format("woff2"),
+    url("assets/fonts/send-flowers-v1-latin-regular.woff") format("woff"),
+    url("assets/fonts/send-flowers-v1-latin-regular.ttf") format("truetype"),
+    url("assets/fonts/send-flowers-v1-latin-regular.svg#SendFlowers")
+      format("svg");
 }
 
 html,
@@ -64,7 +74,7 @@ body {
 }
 
 nav {
-  font-family: "SendFlowers", cursive;
+  font-family: "Send Flowers", cursive;
   font-weight: bold;
   font-size: 1.2rem;
   text-align: center;
@@ -85,7 +95,7 @@ nav {
 }
 
 .main-title {
-  font-family: "SendFlowers", cursive;
+  font-family: "Send Flowers", cursive;
   font-weight: bold;
   color: var(--primary);
   text-align: center;
@@ -105,7 +115,7 @@ nav {
 }
 
 .part {
-  font-family: "SendFlowers", cursive;
+  font-family: "Send Flowers", cursive;
   font-weight: bold;
   color: $medium;
 }
@@ -130,7 +140,7 @@ nav {
 }
 
 .card-header-title {
-  font-family: "SendFlowers", cursive;
+  font-family: "Send Flowers", cursive;
   font-weight: bold;
   font-size: 1.2rem;
   text-align: center;
@@ -138,19 +148,19 @@ nav {
 }
 
 .section {
-  font-family: "SendFlowers", cursive;
+  font-family: "Send Flowers", cursive;
   font-weight: bold;
   color: $medium;
 }
 
 .active-pan {
-  font-family: "SendFlowers", cursive;
+  font-family: "Send Flowers", cursive;
   font-weight: bold;
   color: $medium;
 }
 
 .inactive-pan {
-  font-family: "SendFlowers", cursive;
+  font-family: "Send Flowers", cursive;
   font-weight: bold;
   color: $lighter;
 }

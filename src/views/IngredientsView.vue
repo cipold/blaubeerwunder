@@ -2,7 +2,7 @@
   <div>
     <img
       alt="ingredients"
-      src="../assets/ingredients.svg"
+      src="../assets/icons/ingredients.svg"
       class="header-image"
     />
     <p class="mb-3 text-center">
