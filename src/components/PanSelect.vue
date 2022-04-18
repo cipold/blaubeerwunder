@@ -31,7 +31,7 @@
       size="xs"
     >
       <b-card no-body>
-        <b-card-header class="d-flex">
+        <b-card-header class="d-flex" header-bg-variant="light">
           <span class="card-header-title">Formen</span>
           <router-link
             class="text-muted small ml-auto align-self-center"
@@ -88,9 +88,5 @@ export default {
 <style>
 .modal-body {
   padding: 0 !important;
-}
-
-.modal-dialog {
-  max-width: 400px;
 }
 </style>

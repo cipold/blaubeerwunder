@@ -14,7 +14,7 @@
       <template #aside>
         <img alt="pan" src="../assets/pan.svg" class="teaser-image" />
       </template>
-      <p class="mb-0">
+      <p class="mb-0 mt-2">
         Passe das Rezept auf genau die
         <router-link to="pans">Formen</router-link>
         an, die du verwenden möchtest.
@@ -34,7 +34,7 @@
           src="../assets/ingredients.svg"
         />
       </template>
-      <p class="mb-0">
+      <p class="mb-0 mt-2">
         Plane die Mengen der
         <router-link to="ingredients">Zutaten</router-link>
         für deine Formen.
@@ -54,7 +54,7 @@
           src="../assets/invoice.svg"
         />
       </template>
-      <p class="mb-0">
+      <p class="mb-0 mt-2">
         Erstelle deine
         <router-link to="shopping-list">Einkaufsliste</router-link>
         mit genau den Mengen, die du für deine Formen brauchst.

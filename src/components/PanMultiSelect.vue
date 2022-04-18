@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-card no-body>
-      <b-card-header class="d-flex">
+      <b-card-header class="d-flex" header-bg-variant="light">
         <span class="card-header-title">Formen</span>
         <router-link
           class="text-muted small ml-auto align-self-center"
@@ -20,16 +20,17 @@
         >
           <div class="d-flex">
             <BIconCheckCircleFill
-              class="align-self-center mr-3 text-primary"
+              class="align-self-center mr-3 active-pan"
               v-if="pan.active"
             ></BIconCheckCircleFill>
             <BIconCheckCircle
-              class="align-self-center mr-3 text-secondary"
+              class="align-self-center mr-3 inactive-pan"
               v-else
             ></BIconCheckCircle>
             <h4
               :class="
-                'part d-inline mr-4 mb-0 ' + (pan.active ? 'active-pan' : '')
+                'd-inline mr-4 mb-0 ' +
+                (pan.active ? 'active-pan' : 'inactive-pan')
               "
             >
               {{ pan.label }}
@@ -62,12 +63,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.active-pan {
-  font-family: "SendFlowers", cursive;
-  font-weight: bold;
-  color: var(--primary);
-  text-shadow: 1px 1px var(--secondary);
-}
-</style>

@@ -14,10 +14,12 @@
 
     <div class="divider"></div>
 
-    <b-card no-body>
-      <b-card-header class="d-flex">
-        <span class="card-header-title">Einkaufsliste</span>
-      </b-card-header>
+    <b-card
+      no-body
+      header="Einkaufsliste"
+      header-class="card-header-title"
+      header-bg-variant="light"
+    >
       <b-card-body
         :key="section.section"
         v-for="(section, index) in shoppingList"
@@ -128,11 +130,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.section {
-  font-family: "SendFlowers", cursive;
-  font-weight: bold;
-  color: var(--secondary);
-}
-</style>

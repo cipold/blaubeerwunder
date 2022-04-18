@@ -32,6 +32,16 @@ export default {
     return {
       title: "Willkommen",
       titleTemplate: "%s - " + this.recipeName,
+      htmlAttrs: {
+        lang: "de-DE",
+      },
+      meta: [
+        {
+          name: "description",
+          content:
+            'Rezepte-App für die Torte "Blaubeerwunder". Nie wieder Frust mit den Mengenangaben!',
+        },
+      ],
     };
   },
   computed: {

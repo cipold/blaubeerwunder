@@ -1,6 +1,10 @@
 // Define variable defaults
 $primary: #3c1146;
+$darker: #754a70;
+$medium: #ae8299;
 $secondary: #d4a8b4;
+$lighter: #e8cbd3;
+$light: #fbedf1;
 
 // Then import Bootstrap an BootstrapVue SCSS files (order is important)
 @import "node_modules/bootstrap/scss/bootstrap.scss";
@@ -39,7 +43,10 @@ body {
       0 -50px;
   background-color: var(--secondary) !important;
   background-size: 75px 100px;
-  overflow-y: scroll;
+}
+
+.scrollbar-counter {
+  padding-left: calc(100vw - 100%);
 }
 
 #app {
@@ -74,7 +81,7 @@ nav {
 
   a {
     font-weight: bold;
-    color: var(--secondary);
+    color: $medium;
     margin: 0 10px;
 
     &.router-link-exact-active {
@@ -106,7 +113,7 @@ nav {
 .part {
   font-family: "SendFlowers", cursive;
   font-weight: bold;
-  color: var(--secondary);
+  color: $medium;
 }
 
 .ingredients {
@@ -133,4 +140,29 @@ nav {
   font-weight: bold;
   font-size: 1.2rem;
   text-align: center;
+  color: $darker;
+}
+
+.section {
+  font-family: "SendFlowers", cursive;
+  font-weight: bold;
+  color: $medium;
+}
+
+.active-pan {
+  font-family: "SendFlowers", cursive;
+  font-weight: bold;
+  color: $medium;
+}
+
+.inactive-pan {
+  font-family: "SendFlowers", cursive;
+  font-weight: bold;
+  color: $lighter;
+}
+
+@include media-breakpoint-up(sm) {
+  .modal-dialog {
+    max-width: 560px;
+  }
 }

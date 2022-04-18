@@ -4,3 +4,5 @@ npx vue-pwa-asset-generator -a cake-icon-maskable.svg -o ../../public/img/icons-
 mv ../../public/img/icons-maskable/android-chrome-maskable-192x192.png ../../public/img/icons/android-chrome-maskable-192x192.png
 mv ../../public/img/icons-maskable/android-chrome-maskable-512x512.png ../../public/img/icons/android-chrome-maskable-512x512.png
 rm -rf ../../public/img/icons-maskable
+cp cake-icon.svg ../../public/img/icons/favicon.svg
+cp ../../public/img/icons/favicon.ico ../../public/favicon.ico

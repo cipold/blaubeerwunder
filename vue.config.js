@@ -6,6 +6,8 @@ module.exports = defineConfig({
     msTileColor: "#fbedf1",
     name: "Blaubeerwunder",
     manifestOptions: {
+      description:
+        'Rezepte-App für die Torte "Blaubeerwunder". Nie wieder Frust mit den Mengenangaben!',
       background_color: "#fbedf1",
       icons: [
         {

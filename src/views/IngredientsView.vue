@@ -18,10 +18,12 @@
 
     <div class="divider"></div>
 
-    <b-card no-body header="">
-      <b-card-header class="d-flex">
-        <span class="card-header-title">Zutaten</span>
-      </b-card-header>
+    <b-card
+      no-body
+      header="Zutaten"
+      header-class="card-header-title"
+      header-bg-variant="light"
+    >
       <b-card-body
         :key="part.part"
         v-for="(part, index) in parts"
