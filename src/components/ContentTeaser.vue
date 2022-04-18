@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h4 class="mt-0 text-center">
+    <p class="h4 mt-0 text-center">
       <router-link :to="to" class="part">{{ label }}</router-link>
-    </h4>
+    </p>
     <div class="d-flex">
       <img
         alt="Teaser image"

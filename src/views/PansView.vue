@@ -14,12 +14,12 @@
       <b-list-group flush>
         <b-list-group-item v-for="(pan, index) in pans" :key="`pan-${index}`">
           <div class="mb-3 d-flex flex-wrap">
-            <h4 class="part d-inline mr-4 mb-0">{{ pan.label }}</h4>
+            <p class="h4 part d-inline mr-4 mb-0">{{ pan.label }}</p>
             <div class="align-self-center mr-2">
-              <span class="text-muted">
+              <span class="text-muted small">
                 <BIconSlashCircle></BIconSlashCircle> {{ pan.diameter }} cm
               </span>
-              <span class="text-muted ml-1">
+              <span class="text-muted ml-1 small">
                 <BIconChevronExpand></BIconChevronExpand> {{ pan.height }} cm
               </span>
             </div>

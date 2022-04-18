@@ -17,19 +17,19 @@
               class="align-self-center mr-3 inactive-pan"
               v-else
             ></BIconCheckCircle>
-            <h4
+            <p
               :class="
-                'd-inline mr-4 mb-0 ' +
+                'h4 d-inline mr-4 mb-0 ' +
                 (pan.active ? 'active-pan' : 'inactive-pan')
               "
             >
               {{ pan.label }}
-            </h4>
+            </p>
             <div class="align-self-center ml-auto">
-              <span class="text-muted">
+              <span class="text-muted small">
                 <BIconSlashCircle></BIconSlashCircle> {{ pan.diameter }} cm
               </span>
-              <span class="text-muted ml-1">
+              <span class="text-muted ml-1 small">
                 <BIconChevronExpand></BIconChevronExpand> {{ pan.height }} cm
               </span>
             </div>

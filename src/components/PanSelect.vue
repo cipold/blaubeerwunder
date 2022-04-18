@@ -4,15 +4,15 @@
       <b-list-group flush>
         <b-list-group-item button v-b-modal.modal-pans>
           <div class="d-flex">
-            <h4 class="part d-inline mr-4 mb-0">
+            <p class="h4 part d-inline mr-4 mb-0">
               {{ selectedPan.label }}
-            </h4>
+            </p>
             <div class="align-self-center ml-auto">
-              <span class="text-muted">
+              <span class="text-muted small">
                 <BIconSlashCircle></BIconSlashCircle>
                 {{ selectedPan.diameter }} cm
               </span>
-              <span class="text-muted ml-1">
+              <span class="text-muted ml-1 small">
                 <BIconChevronExpand></BIconChevronExpand>
                 {{ selectedPan.height }} cm
               </span>
@@ -52,12 +52,12 @@
             "
           >
             <div class="d-flex">
-              <h4 class="part d-inline mr-4 mb-0">{{ pan.label }}</h4>
+              <p class="h4 part d-inline mr-4 mb-0">{{ pan.label }}</p>
               <div class="align-self-center ml-auto">
-                <span class="text-muted">
+                <span class="text-muted small">
                   <BIconSlashCircle></BIconSlashCircle> {{ pan.diameter }} cm
                 </span>
-                <span class="text-muted ml-1">
+                <span class="text-muted ml-1 small">
                   <BIconChevronExpand></BIconChevronExpand>
                   {{ pan.height }} cm
                 </span>
