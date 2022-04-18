@@ -10,16 +10,9 @@
 
     <div class="divider"></div>
 
-    <PanMultiSelect />
+    <PanMultiSelect class="mb-4" />
 
-    <div class="divider"></div>
-
-    <b-card
-      no-body
-      header="Einkaufsliste"
-      header-class="card-header-title"
-      header-bg-variant="light"
-    >
+    <b-card no-body>
       <b-card-body
         :key="section.section"
         v-for="(section, index) in shoppingList"

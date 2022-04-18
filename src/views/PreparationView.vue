@@ -14,9 +14,7 @@
 
     <div class="divider"></div>
 
-    <PanSelect />
-
-    <div class="divider"></div>
+    <PanSelect class="mb-4" />
 
     <div :key="step.part" v-for="step in recipeSteps">
       <h4 class="part">{{ step.part }}</h4>

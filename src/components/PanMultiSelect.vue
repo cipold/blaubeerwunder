@@ -1,16 +1,6 @@
 <template>
   <div>
     <b-card no-body>
-      <b-card-header class="d-flex" header-bg-variant="light">
-        <span class="card-header-title">Formen</span>
-        <router-link
-          class="text-muted small ml-auto align-self-center"
-          to="/pans"
-        >
-          <BIconPencil class="mr-1"></BIconPencil>
-          anpassen
-        </router-link>
-      </b-card-header>
       <b-list-group flush>
         <b-list-group-item
           v-for="(pan, index) in pans"
@@ -47,6 +37,15 @@
         </b-list-group-item>
       </b-list-group>
     </b-card>
+    <div class="d-flex mt-1">
+      <router-link
+        class="text-muted small ml-auto align-self-center"
+        to="/pans"
+      >
+        <BIconPencil class="mr-1"></BIconPencil>
+        anpassen
+      </router-link>
+    </div>
   </div>
 </template>
 <script>

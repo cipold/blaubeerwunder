@@ -14,16 +14,9 @@
 
     <div class="divider"></div>
 
-    <PanSelect />
+    <PanSelect class="mb-4" />
 
-    <div class="divider"></div>
-
-    <b-card
-      no-body
-      header="Zutaten"
-      header-class="card-header-title"
-      header-bg-variant="light"
-    >
+    <b-card no-body>
       <b-card-body
         :key="part.part"
         v-for="(part, index) in parts"
