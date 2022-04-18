@@ -3,10 +3,10 @@ module.exports = defineConfig({
   transpileDependencies: true,
   pwa: {
     themeColor: "#3c1146",
-    msTileColor: "#d4a8b4",
+    msTileColor: "#fbedf1",
     name: "Blaubeerwunder",
     manifestOptions: {
-      background_color: "#d4a8b4",
+      background_color: "#fbedf1",
       icons: [
         {
           src: "./img/icons/android-chrome-192x192.png",

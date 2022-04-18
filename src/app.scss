@@ -9,6 +9,7 @@ $secondary: #d4a8b4;
 @font-face {
   font-family: "SendFlowers";
   src: url("assets/SendFlowers-Regular.ttf");
+  font-display: swap;
 }
 
 html,
@@ -97,6 +98,7 @@ nav {
 
 .header-image {
   display: block;
+  width: 100px;
   height: 100px;
   margin: 0 auto 20px auto;
 }

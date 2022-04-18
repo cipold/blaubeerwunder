@@ -337,7 +337,7 @@ export default {
           {
             text: "Ca. 2-5 Minuten kühlstellen und 1/4 der Sahne unterheben.",
             checked: false,
-            icon: "img/bell.svg",
+            icon: "timer",
             ingredients: [
               {
                 name: "Steife Sahne",
@@ -353,7 +353,7 @@ export default {
           {
             text: "Torte mind. 30 Minuten kaltstellen.",
             checked: false,
-            icon: "img/bell.svg",
+            icon: "timer",
           },
           {
             text: "Für die mittlere Schicht wieder 1/3 der Gelatine einweichen.",
@@ -377,7 +377,7 @@ export default {
           {
             text: "Torte wieder 30 Minuten kalt stellen.",
             checked: false,
-            icon: "img/bell.svg",
+            icon: "timer",
           },
           {
             text: "Für die obere Schicht restliche Gelatine einweichen.",
@@ -408,7 +408,7 @@ export default {
           {
             text: "Torte mind. 4 Stunden kalt stellen.",
             checked: false,
-            icon: "img/bell.svg",
+            icon: "timer",
           },
           {
             text: "Springform entfernen.",
@@ -464,7 +464,7 @@ export default {
           {
             text: "Mind. 30 Minuten kaltstellen.",
             checked: false,
-            icon: "img/bell.svg",
+            icon: "timer",
           },
         ],
       },

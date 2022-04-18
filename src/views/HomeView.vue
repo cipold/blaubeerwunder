@@ -12,7 +12,7 @@
     </h5>
     <b-media vertical-align="center">
       <template #aside>
-        <img alt="pan" width="64" src="../assets/pan.svg" />
+        <img alt="pan" src="../assets/pan.svg" class="teaser-image" />
       </template>
       <p class="mb-0">
         Passe das Rezept auf genau die
@@ -28,7 +28,11 @@
     </h5>
     <b-media vertical-align="center">
       <template #aside>
-        <img alt="ingredients" width="64" src="../assets/ingredients.svg" />
+        <img
+          alt="ingredients"
+          class="teaser-image"
+          src="../assets/ingredients.svg"
+        />
       </template>
       <p class="mb-0">
         Plane die Mengen der
@@ -44,7 +48,11 @@
     </h5>
     <b-media vertical-align="center">
       <template #aside>
-        <img alt="shopping-list" width="64" src="../assets/invoice.svg" />
+        <img
+          alt="shopping-list"
+          class="teaser-image"
+          src="../assets/invoice.svg"
+        />
       </template>
       <p class="mb-0">
         Erstelle deine
@@ -60,7 +68,11 @@
     </h5>
     <b-media vertical-align="center">
       <template #aside>
-        <img alt="preparation" width="64" src="../assets/preparation.svg" />
+        <img
+          alt="preparation"
+          class="teaser-image"
+          src="../assets/preparation.svg"
+        />
       </template>
       <p class="mb-0 mt-2">
         Wenn es so weit ist, dann tippe auf
@@ -87,3 +99,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.teaser-image {
+  width: 64px;
+  height: 64px;
+}
+</style>

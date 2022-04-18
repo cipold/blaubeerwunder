@@ -29,9 +29,9 @@
           <div v-on:click="toggle(instruction)" class="d-flex">
             <span class="align-self-center">{{ instruction.text }}</span>
             <img
-              v-if="instruction.icon"
+              v-if="instruction.icon === 'timer'"
               alt="instruction icon"
-              :src="instruction.icon"
+              src="../assets/bell.svg"
               class="ml-auto align-self-center instruction-icon"
             />
           </div>
@@ -198,6 +198,7 @@ export default {
 </script>
 
 <style scoped>
+/*noinspection CssUnusedSymbol*/
 .instruction-checked,
 .ingredient-checked {
   text-decoration: line-through;
@@ -217,5 +218,6 @@ export default {
 
 .instruction-icon {
   width: 32px;
+  height: 32px;
 }
 </style>
