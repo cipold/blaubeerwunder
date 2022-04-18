@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="pt-3">
+  <div id="app" class="pt-3 d-flex flex-column">
     <header>
       <h1 class="main-title">
         <router-link to="/">{{ recipeName }}</router-link>
@@ -12,7 +12,7 @@
         <router-link to="/preparation">Zubereitung</router-link>
       </nav>
     </header>
-    <b-container class="content">
+    <b-container class="p-4 flex-grow-1">
       <router-view />
     </b-container>
     <footer class="footer text-center text-muted">
