@@ -85,14 +85,9 @@
       </b-card-footer>
     </b-card>
     <div class="d-flex">
-      <b-button
-        class="ml-auto text-muted"
-        variant="light"
-        size="sm"
-        @click="reset()"
-      >
+      <b-link class="ml-auto text-muted small" @click="reset()">
         Zurücksetzen
-      </b-button>
+      </b-link>
     </div>
   </div>
 </template>
