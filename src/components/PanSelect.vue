@@ -1,26 +1,24 @@
 <template>
   <div>
-    <b-card no-body>
-      <b-list-group flush>
-        <b-list-group-item button v-b-modal.modal-pans>
-          <div class="d-flex">
-            <p class="h4 pan d-inline mr-4 mb-0">
-              {{ selectedPan.label }}
-            </p>
-            <div class="align-self-center ml-auto">
-              <span class="text-muted small">
-                <BIconSlashCircle></BIconSlashCircle>
-                {{ selectedPan.diameter }} cm
-              </span>
-              <span class="text-muted ml-1 small">
-                <BIconChevronExpand></BIconChevronExpand>
-                {{ selectedPan.height }} cm
-              </span>
-            </div>
+    <b-list-group>
+      <b-list-group-item button v-b-modal.modal-pans>
+        <div class="d-flex">
+          <p class="h4 pan d-inline mr-4 mb-0">
+            {{ selectedPan.label }}
+          </p>
+          <div class="align-self-center ml-auto">
+            <span class="text-muted small">
+              <BIconSlashCircle></BIconSlashCircle>
+              {{ selectedPan.diameter }} cm
+            </span>
+            <span class="text-muted ml-1 small">
+              <BIconChevronExpand></BIconChevronExpand>
+              {{ selectedPan.height }} cm
+            </span>
           </div>
-        </b-list-group-item>
-      </b-list-group>
-    </b-card>
+        </div>
+      </b-list-group-item>
+    </b-list-group>
 
     <b-modal
       id="modal-pans"

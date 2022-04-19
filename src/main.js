@@ -20,6 +20,7 @@ import {
   BIconPlusCircle,
   BIconSlashCircle,
   BIconTrash,
+  BIconXCircle,
 } from "bootstrap-vue";
 import ContentDivider from "@/components/ContentDivider";
 import PageIntro from "@/components/PageIntro";
@@ -42,6 +43,7 @@ Vue.component("BIconPencil", BIconPencil);
 Vue.component("BIconPlusCircle", BIconPlusCircle);
 Vue.component("BIconSlashCircle", BIconSlashCircle);
 Vue.component("BIconTrash", BIconTrash);
+Vue.component("BIconXCircle", BIconXCircle);
 
 Vue.component("ContentDivider", ContentDivider);
 Vue.component("PageIntro", PageIntro);

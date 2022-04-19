@@ -7,7 +7,7 @@
 
     <ContentDivider />
 
-    <b-card no-body class="mb-4">
+    <b-card no-body>
       <b-list-group flush>
         <b-list-group-item v-for="(pan, index) in pans" :key="`pan-${index}`">
           <div class="mb-3 d-flex flex-wrap">
@@ -74,18 +74,17 @@
           </b-row>
         </b-list-group-item>
       </b-list-group>
-      <b-card-footer>
+      <b-card-footer class="d-flex">
         <b-link class="text-muted small" @click="add">
           <BIconPlusCircle></BIconPlusCircle>
           weitere Form hinzufügen
         </b-link>
+        <b-link class="ml-auto text-muted small" @click="reset()">
+          <BIconXCircle></BIconXCircle>
+          zurücksetzen
+        </b-link>
       </b-card-footer>
     </b-card>
-    <div class="d-flex">
-      <b-link class="ml-auto text-muted small" @click="reset()">
-        Zurücksetzen
-      </b-link>
-    </div>
   </div>
 </template>
 
