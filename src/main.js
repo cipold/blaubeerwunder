@@ -21,6 +21,7 @@ import {
   BIconSlashCircle,
   BIconTrash,
 } from "bootstrap-vue";
+import ContentDivider from "@/components/ContentDivider";
 
 Vue.use(VueMeta);
 
@@ -40,6 +41,8 @@ Vue.component("BIconPencil", BIconPencil);
 Vue.component("BIconPlusCircle", BIconPlusCircle);
 Vue.component("BIconSlashCircle", BIconSlashCircle);
 Vue.component("BIconTrash", BIconTrash);
+
+Vue.component("ContentDivider", ContentDivider);
 
 import "./app.scss";
 

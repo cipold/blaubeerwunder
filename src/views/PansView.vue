@@ -8,7 +8,7 @@
       </em>
     </p>
 
-    <div class="divider"></div>
+    <ContentDivider />
 
     <b-card no-body class="mb-4">
       <b-list-group flush>
@@ -111,3 +111,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.pan {
+  font-family: "Send Flowers", cursive;
+  font-weight: bold;
+  color: var(--medium);
+}
+</style>

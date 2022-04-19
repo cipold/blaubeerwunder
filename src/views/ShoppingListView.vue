@@ -12,7 +12,7 @@
       </em>
     </p>
 
-    <div class="divider"></div>
+    <ContentDivider />
 
     <PanMultiSelect class="mb-4" />
 
@@ -22,7 +22,7 @@
         v-for="(section, index) in shoppingList"
         :class="{ 'pt-0': index }"
       >
-        <h4 class="section">{{ section.section }}</h4>
+        <h4 class="headline">{{ section.section }}</h4>
         <ul class="ingredients">
           <li :key="ingredient.name" v-for="ingredient in section.ingredients">
             <span class="mr-1">{{
@@ -127,3 +127,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.ingredients {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+</style>

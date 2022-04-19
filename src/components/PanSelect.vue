@@ -90,3 +90,19 @@ export default {
   padding: 0 !important;
 }
 </style>
+
+<style scoped>
+.pan {
+  font-family: "Send Flowers", cursive;
+  font-weight: bold;
+  color: var(--medium);
+}
+
+.card-header-title {
+  font-family: "Send Flowers", cursive;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--darker);
+}
+</style>

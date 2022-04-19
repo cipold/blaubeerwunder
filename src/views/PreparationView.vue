@@ -12,7 +12,7 @@
       </em>
     </p>
 
-    <div class="divider"></div>
+    <ContentDivider />
 
     <PanSelect class="mb-4" />
 
@@ -62,11 +62,9 @@
         </li>
       </ul>
     </div>
-    <img
-      alt="preparation"
-      src="../assets/icons/cake.svg"
-      class="header-image"
-    />
+    <div class="text-center mt-4">
+      <img alt="cake" class="complete-image" src="../assets/icons/cake.svg" />
+    </div>
   </div>
 </template>
 
@@ -198,5 +196,10 @@ export default {
 .instruction-icon {
   width: 32px;
   height: 32px;
+}
+
+.complete-image {
+  width: 100px;
+  height: 100px;
 }
 </style>

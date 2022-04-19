@@ -12,7 +12,7 @@
       </em>
     </p>
 
-    <div class="divider"></div>
+    <ContentDivider />
 
     <PanSelect class="mb-4" />
 
@@ -55,7 +55,9 @@ export default {
   metaInfo: {
     title: "Zutaten",
   },
-  components: { PanSelect },
+  components: {
+    PanSelect,
+  },
   computed: {
     ...mapState("pans", ["pans"]),
     ...mapState("recipe", {
@@ -107,3 +109,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.ingredients {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+</style>

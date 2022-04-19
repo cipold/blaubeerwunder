@@ -5,7 +5,7 @@
       <em>Nie wieder Frust mit den Mengen<br />bei der Geburtstagstorte!</em>
     </p>
 
-    <div class="divider"></div>
+    <ContentDivider />
 
     <ContentTeaser
       label="Formen"
@@ -17,7 +17,7 @@
       an, die du verwenden möchtest.
     </ContentTeaser>
 
-    <div class="divider"></div>
+    <ContentDivider />
 
     <ContentTeaser
       label="Zutaten"
@@ -29,7 +29,7 @@
       für deine Formen.
     </ContentTeaser>
 
-    <div class="divider"></div>
+    <ContentDivider />
 
     <ContentTeaser
       label="Einkaufsliste"
@@ -41,7 +41,7 @@
       mit genau den Mengen, die du für deine Formen brauchst.
     </ContentTeaser>
 
-    <div class="divider"></div>
+    <ContentDivider />
 
     <ContentTeaser
       label="Zubereitung"

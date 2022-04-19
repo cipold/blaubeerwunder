@@ -66,3 +66,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.pan-multi-select {
+  font-family: "Send Flowers", cursive;
+  font-weight: bold;
+  color: var(--lighter);
+}
+
+.pan-multi-select.active {
+  color: var(--medium);
+}
+</style>
