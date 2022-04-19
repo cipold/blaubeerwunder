@@ -1,108 +1,63 @@
 <template>
   <div>
-    <b-list-group>
-      <b-list-group-item button v-b-modal.modal-pans>
-        <div class="d-flex">
-          <p class="h4 pan d-inline mr-4 mb-0">
-            {{ selectedPan.label }}
-          </p>
-          <div class="align-self-center ml-auto">
-            <span class="text-muted small">
-              <BIconSlashCircle></BIconSlashCircle>
-              {{ selectedPan.diameter }} cm
-            </span>
-            <span class="text-muted ml-1 small">
-              <BIconChevronExpand></BIconChevronExpand>
-              {{ selectedPan.height }} cm
-            </span>
-          </div>
-        </div>
-      </b-list-group-item>
-    </b-list-group>
+    <b-collapse v-model="allPansVisible">
+      <b-list-group>
+        <b-list-group-item
+          v-for="(pan, index) in pans"
+          :key="`pan-${index}`"
+          button
+          @click="
+            select(index);
+            allPansVisible = false;
+          "
+        >
+          <PanLine :pan="pan" :active="pan === selectedPan" />
+        </b-list-group-item>
+      </b-list-group>
+      <div class="d-flex mt-1">
+        <router-link
+          class="text-muted small ml-auto align-self-center"
+          to="/pans"
+        >
+          <BIconPencil class="mr-1" />
+          anpassen
+        </router-link>
+      </div>
+    </b-collapse>
 
-    <b-modal
-      id="modal-pans"
-      centered
-      title="BootstrapVue"
-      hide-header
-      hide-footer
-      size="xs"
-    >
-      <b-card no-body>
-        <b-card-header class="d-flex" header-bg-variant="light">
-          <span class="card-header-title">Formen</span>
-          <router-link
-            class="text-muted small ml-auto align-self-center"
-            to="/pans"
-          >
-            <BIconPencil class="mr-1"></BIconPencil>
-            anpassen
-          </router-link>
-        </b-card-header>
-        <b-list-group flush>
-          <b-list-group-item
-            v-for="(pan, index) in pans"
-            :key="`pan-${index}`"
-            button
-            @click="
-              select(index);
-              $bvModal.hide('modal-pans');
-            "
-          >
-            <div class="d-flex">
-              <p class="h4 pan d-inline mr-4 mb-0">{{ pan.label }}</p>
-              <div class="align-self-center ml-auto">
-                <span class="text-muted small">
-                  <BIconSlashCircle></BIconSlashCircle> {{ pan.diameter }} cm
-                </span>
-                <span class="text-muted ml-1 small">
-                  <BIconChevronExpand></BIconChevronExpand>
-                  {{ pan.height }} cm
-                </span>
-              </div>
-            </div>
-          </b-list-group-item>
-        </b-list-group>
-      </b-card>
-    </b-modal>
+    <b-collapse v-model="allPansInvisible">
+      <b-list-group>
+        <b-list-group-item button @click="allPansVisible = !allPansVisible">
+          <PanLine :pan="selectedPan" />
+        </b-list-group-item>
+      </b-list-group>
+    </b-collapse>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters, mapState } from "vuex";
+import PanLine from "@/components/PanLine";
 
 export default {
   name: "PanSelect",
+  components: {
+    PanLine,
+  },
+  data() {
+    return {
+      allPansVisible: false,
+    };
+  },
   computed: {
     ...mapState("pans", ["pans"]),
     ...mapGetters("pans", ["selectedPan"]),
+    allPansInvisible() {
+      return !this.allPansVisible;
+    },
   },
   methods: {
     ...mapActions("pans", ["select"]),
   },
 };
-
-// TODO don't use modal
 </script>
-
-<style>
-.modal-body {
-  padding: 0 !important;
-}
-</style>
-
-<style scoped>
-.pan {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
-  color: var(--medium);
-}
-
-.card-header-title {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-align: center;
-  color: var(--darker);
-}
-</style>

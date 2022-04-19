@@ -55,9 +55,3 @@ body {
   font-weight: bold;
   color: var(--medium);
 }
-
-@include media-breakpoint-up(sm) {
-  .modal-dialog {
-    max-width: 560px;
-  }
-}

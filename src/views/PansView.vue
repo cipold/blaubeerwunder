@@ -10,78 +10,80 @@
     <b-card no-body>
       <b-list-group flush>
         <b-list-group-item v-for="(pan, index) in pans" :key="`pan-${index}`">
-          <div class="mb-3 d-flex flex-wrap">
-            <p class="h4 pan d-inline mr-4 mb-0">{{ pan.label }}</p>
-            <div class="align-self-center mr-2">
-              <span class="text-muted small">
-                <BIconSlashCircle></BIconSlashCircle> {{ pan.diameter }} cm
-              </span>
-              <span class="text-muted ml-1 small">
-                <BIconChevronExpand></BIconChevronExpand> {{ pan.height }} cm
-              </span>
-            </div>
+          <div class="d-flex flex-wrap">
+            <span
+              class="text-muted mr-2 align-self-center"
+              title="Anpassen"
+              v-b-toggle="`pan-${index}`"
+            >
+              <BIconPencil />
+            </span>
+            <PanLine :pan="pan" class="flex-grow-1" />
             <b-link
-              class="text-muted ml-auto align-self-center"
+              class="text-muted ml-2 align-self-center"
               v-if="pans.length > 1"
               @click="remove(index)"
               title="Form entfernen"
             >
-              <BIconTrash></BIconTrash>
+              <BIconTrash />
             </b-link>
           </div>
-          <b-row class="my-1">
-            <b-col cols="3">
-              <label>Name:</label>
-            </b-col>
-            <b-col cols="9">
-              <b-input
-                :id="`name-${index}`"
-                type="text"
-                :value="pan.label"
-                size="sm"
-                @input="input(index, 'label', $event)"
-              ></b-input>
-            </b-col>
-          </b-row>
-          <b-row class="my-1">
-            <b-col cols="3">
-              <label>Breite:</label>
-            </b-col>
-            <b-col cols="9">
-              <b-input-group append="cm" size="sm">
-                <b-input
-                  :id="`diameter-${index}`"
-                  type="number"
-                  @input="input(index, 'diameter', $event)"
-                  :value="pan.diameter"
-                ></b-input>
-              </b-input-group>
-            </b-col>
-          </b-row>
-          <b-row class="my-1">
-            <b-col cols="3">
-              <label>Höhe:</label>
-            </b-col>
-            <b-col cols="9">
-              <b-input-group :id="`height-${index}`" append="cm" size="sm">
-                <b-input
-                  type="number"
-                  :value="pan.height"
-                  @input="input(index, 'height', $event)"
-                ></b-input>
-              </b-input-group>
-            </b-col>
-          </b-row>
+
+          <b-collapse :id="`pan-${index}`" accordion="pans">
+            <div class="mt-3">
+              <b-row class="my-1">
+                <b-col cols="3">
+                  <label>Name:</label>
+                </b-col>
+                <b-col cols="9">
+                  <b-input
+                    :id="`name-${index}`"
+                    type="text"
+                    :value="pan.label"
+                    size="sm"
+                    @input="input(index, 'label', $event)"
+                  ></b-input>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col cols="3">
+                  <label>Breite:</label>
+                </b-col>
+                <b-col cols="9">
+                  <b-input-group append="cm" size="sm">
+                    <b-input
+                      :id="`diameter-${index}`"
+                      type="number"
+                      @input="input(index, 'diameter', $event)"
+                      :value="pan.diameter"
+                    ></b-input>
+                  </b-input-group>
+                </b-col>
+              </b-row>
+              <b-row class="my-1">
+                <b-col cols="3">
+                  <label>Höhe:</label>
+                </b-col>
+                <b-col cols="9">
+                  <b-input-group :id="`height-${index}`" append="cm" size="sm">
+                    <b-input
+                      type="number"
+                      :value="pan.height"
+                      @input="input(index, 'height', $event)"
+                    ></b-input>
+                  </b-input-group>
+                </b-col>
+              </b-row>
+            </div>
+          </b-collapse>
         </b-list-group-item>
       </b-list-group>
       <b-card-footer class="d-flex">
         <b-link class="text-muted small" @click="add">
-          <BIconPlusCircle></BIconPlusCircle>
-          weitere Form hinzufügen
+          <BIconPlusCircle class="mr-1" />Form hinzufügen
         </b-link>
         <b-link class="ml-auto text-muted small" @click="reset()">
-          <BIconXCircle></BIconXCircle>
-          zurücksetzen
+          <BIconXCircle class="mr-1" />alle zurücksetzen
         </b-link>
       </b-card-footer>
     </b-card>
@@ -90,11 +92,15 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
+import PanLine from "@/components/PanLine";
 
 export default {
   name: "PansView",
   metaInfo: {
     title: "Formen",
+  },
+  components: {
+    PanLine,
   },
   computed: {
     ...mapState("pans", ["pans"]),
@@ -107,11 +113,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.pan {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
-  color: var(--medium);
-}
-</style>

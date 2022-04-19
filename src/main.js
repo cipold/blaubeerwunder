@@ -6,12 +6,12 @@ import store from "./store";
 import VueMeta from "vue-meta";
 import {
   CardPlugin,
+  CollapsePlugin,
   FormInputPlugin,
   InputGroupPlugin,
   LinkPlugin,
   ListGroupPlugin,
   LayoutPlugin,
-  ModalPlugin,
   BIconCheckCircle,
   BIconCheckCircleFill,
   BIconChevronExpand,
@@ -28,12 +28,12 @@ import PageIntro from "@/components/PageIntro";
 Vue.use(VueMeta);
 
 Vue.use(CardPlugin);
+Vue.use(CollapsePlugin);
 Vue.use(FormInputPlugin);
 Vue.use(InputGroupPlugin);
 Vue.use(LinkPlugin);
 Vue.use(ListGroupPlugin);
 Vue.use(LayoutPlugin);
-Vue.use(ModalPlugin);
 
 Vue.component("BIconCheckCircle", BIconCheckCircle);
 Vue.component("BIconCheckCircleFill", BIconCheckCircleFill);

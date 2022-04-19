@@ -7,36 +7,7 @@
         button
         @click="toggle(index)"
       >
-        <div class="d-flex">
-          <BIconCheckCircleFill
-            class="align-self-center mr-3 pan-multi-select active"
-            v-if="pan.active"
-          ></BIconCheckCircleFill>
-          <BIconCheckCircle
-            class="align-self-center mr-3 pan-multi-select"
-            v-else
-          ></BIconCheckCircle>
-          <p
-            :class="[
-              'h4',
-              'd-inline',
-              'mr-4',
-              'mb-0',
-              'pan-multi-select',
-              { active: pan.active },
-            ]"
-          >
-            {{ pan.label }}
-          </p>
-          <div class="align-self-center ml-auto">
-            <span class="text-muted small">
-              <BIconSlashCircle></BIconSlashCircle> {{ pan.diameter }} cm
-            </span>
-            <span class="text-muted ml-1 small">
-              <BIconChevronExpand></BIconChevronExpand> {{ pan.height }} cm
-            </span>
-          </div>
-        </div>
+        <PanLine :pan="pan" :active="pan.active" :show-check="true" />
       </b-list-group-item>
     </b-list-group>
     <div class="d-flex mt-1">
@@ -44,7 +15,7 @@
         class="text-muted small ml-auto align-self-center"
         to="/pans"
       >
-        <BIconPencil class="mr-1"></BIconPencil>
+        <BIconPencil class="mr-1" />
         anpassen
       </router-link>
     </div>
@@ -52,9 +23,11 @@
 </template>
 <script>
 import { mapActions, mapGetters, mapState } from "vuex";
+import PanLine from "@/components/PanLine";
 
 export default {
   name: "PanMultiSelect",
+  components: { PanLine },
   computed: {
     ...mapState("pans", ["pans"]),
     ...mapGetters("pans", ["activePans"]),
@@ -64,15 +37,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.pan-multi-select {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
-  color: var(--lighter);
-}
-
-.pan-multi-select.active {
-  color: var(--medium);
-}
-</style>
