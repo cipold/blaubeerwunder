@@ -52,8 +52,13 @@ export default {
   computed: {
     ...mapState("pans", ["pans"]),
     ...mapGetters("pans", ["selectedPan"]),
-    allPansInvisible() {
-      return !this.allPansVisible;
+    allPansInvisible: {
+      get() {
+        return !this.allPansVisible;
+      },
+      set(value) {
+        this.allPansVisible = !value;
+      },
     },
   },
   methods: {
