@@ -1,16 +1,9 @@
 <template>
   <div>
-    <img
-      alt="preparation"
-      src="../assets/icons/preparation.svg"
-      class="header-image"
-    />
-    <p class="mb-3 text-center">
-      <em>
-        Wähle deine Form und los geht's!<br />
-        Hake erledigte Schritte ab, indem du drauf tippst.
-      </em>
-    </p>
+    <PageIntro :image="require('@/assets/icons/preparation.svg')">
+      Wähle deine Form und los geht's!<br />
+      Hake erledigte Schritte ab, indem du drauf tippst.
+    </PageIntro>
 
     <ContentDivider />
 
@@ -29,7 +22,7 @@
             <img
               v-if="instruction.icon === 'timer'"
               alt="instruction icon"
-              src="../assets/icons/bell.svg"
+              src="@/assets/icons/bell.svg"
               class="ml-auto align-self-center instruction-icon"
             />
           </div>
@@ -63,7 +56,7 @@
       </ul>
     </div>
     <div class="text-center mt-4">
-      <img alt="cake" class="complete-image" src="../assets/icons/cake.svg" />
+      <img alt="cake" class="complete-image" src="@/assets/icons/cake.svg" />
     </div>
   </div>
 </template>

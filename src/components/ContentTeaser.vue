@@ -19,7 +19,11 @@
 <script>
 export default {
   name: "ContentTeaser",
-  props: ["label", "to", "image"],
+  props: {
+    label: String,
+    to: String,
+    image: String,
+  },
 };
 </script>
 

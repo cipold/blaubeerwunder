@@ -1,16 +1,9 @@
 <template>
   <div>
-    <img
-      alt="ingredients"
-      src="../assets/icons/ingredients.svg"
-      class="header-image"
-    />
-    <p class="mb-3 text-center">
-      <em>
-        Wähle deine Form - die Mengen aller<br />
-        Zutaten werden automatisch angepasst.
-      </em>
-    </p>
+    <PageIntro :image="require('@/assets/icons/ingredients.svg')">
+      Wähle deine Form - die Mengen aller<br />
+      Zutaten werden automatisch angepasst.
+    </PageIntro>
 
     <ContentDivider />
 

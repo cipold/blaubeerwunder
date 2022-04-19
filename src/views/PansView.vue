@@ -1,12 +1,9 @@
 <template>
   <div>
-    <img alt="ingredients" src="../assets/icons/pan.svg" class="header-image" />
-    <p class="mb-3 text-center">
-      <em>
-        Stelle hier ein, welche größe deine Formen haben und füge weitere Formen
-        hinzu.
-      </em>
-    </p>
+    <PageIntro :image="require('@/assets/icons/pan.svg')">
+      Passe die Größen deiner Formen an<br />
+      und füge weitere Formen hinzu.
+    </PageIntro>
 
     <ContentDivider />
 

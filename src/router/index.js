@@ -1,10 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import PansView from "../views/PansView.vue";
-import IngredientsView from "../views/IngredientsView.vue";
-import ShoppingListView from "../views/ShoppingListView.vue";
-import PreparationView from "../views/PreparationView.vue";
+import HomeView from "@/views/HomeView.vue";
+import PansView from "@/views/PansView.vue";
+import IngredientsView from "@/views/IngredientsView.vue";
+import ShoppingListView from "@/views/ShoppingListView.vue";
+import PreparationView from "@/views/PreparationView.vue";
 
 Vue.use(VueRouter);
 

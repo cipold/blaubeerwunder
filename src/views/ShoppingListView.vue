@@ -1,16 +1,9 @@
 <template>
   <div>
-    <img
-      alt="ingredients"
-      src="../assets/icons/invoice.svg"
-      class="header-image"
-    />
-    <p class="mb-3 text-center">
-      <em>
-        Wähle alle Formen aus, für die du<br />
-        Zutaten einkaufen möchtest.
-      </em>
-    </p>
+    <PageIntro :image="require('@/assets/icons/invoice.svg')">
+      Wähle alle Formen aus, für die du<br />
+      Zutaten einkaufen möchtest.
+    </PageIntro>
 
     <ContentDivider />
 
