@@ -53,7 +53,6 @@ export default {
 };
 
 // TODO add info page referencing open source content
-// TODO add real images
 </script>
 
 <style lang="scss" scoped>

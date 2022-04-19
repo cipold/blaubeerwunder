@@ -81,6 +81,8 @@ export default {
     ...mapActions("pans", ["select"]),
   },
 };
+
+// TODO don't use modal
 </script>
 
 <style>

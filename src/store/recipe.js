@@ -1,7 +1,6 @@
 // TODO read recipe from JSON file
 // TODO automatically inject checked: false
 // TODO persist checked state
-// TODO remove copyrighted content (rewrite text, relabel?)
 
 export default {
   namespaced: true,

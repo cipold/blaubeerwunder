@@ -165,8 +165,6 @@ export default {
     },
   },
 };
-
-// TODO make addsTo visible in recipe steps
 </script>
 
 <style lang="scss" scoped>
