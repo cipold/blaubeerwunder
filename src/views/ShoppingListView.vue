@@ -11,13 +11,16 @@
 
     <b-card no-body>
       <b-card-body
-        :key="section.section"
-        v-for="(section, index) in shoppingList"
-        :class="{ 'pt-0': index }"
+        :key="`section-${sectionIndex}`"
+        v-for="(section, sectionIndex) in shoppingList"
+        :class="{ 'pt-0': sectionIndex }"
       >
         <h4 class="headline">{{ section.section }}</h4>
         <ul class="ingredients">
-          <li :key="ingredient.name" v-for="ingredient in section.ingredients">
+          <li
+            :key="`ingredient-${ingredientIndex}`"
+            v-for="(ingredient, ingredientIndex) in section.ingredients"
+          >
             <span class="mr-1">{{
               presentAmount(ingredient.amount, ingredient.unit)
             }}</span>

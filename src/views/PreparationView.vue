@@ -9,12 +9,12 @@
 
     <PanSelect class="mb-4" />
 
-    <div :key="step.part" v-for="step in recipeSteps">
+    <div :key="`step-${stepIndex}`" v-for="(step, stepIndex) in recipeSteps">
       <h4 class="headline">{{ step.part }}</h4>
       <ul class="instructions mb-4">
         <li
-          :key="instruction.text"
-          v-for="instruction in step.instructions"
+          :key="`instruction-${stepIndex}-${instructionIndex}`"
+          v-for="(instruction, instructionIndex) in step.instructions"
           :class="['mb-3', { 'instruction-checked': instruction.checked }]"
         >
           <div v-on:click="toggle(instruction)" class="d-flex">
@@ -30,8 +30,8 @@
           </div>
           <ul class="instruction-ingredients">
             <li
-              v-for="(ingredient, index) in instruction.ingredients"
-              :key="step.part + instruction.text + ingredient.name + index"
+              v-for="(ingredient, ingredientIndex) in instruction.ingredients"
+              :key="`ingredient-${stepIndex}-${instructionIndex}-${ingredientIndex}`"
               :class="{ 'ingredient-checked': ingredient.checked }"
               @click="toggle(ingredient)"
             >

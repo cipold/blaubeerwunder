@@ -11,13 +11,16 @@
 
     <b-card no-body>
       <b-card-body
-        :key="part.part"
-        v-for="(part, index) in parts"
-        :class="{ 'pt-0': index }"
+        :key="`part-${partIndex}`"
+        v-for="(part, partIndex) in parts"
+        :class="{ 'pt-0': partIndex }"
       >
         <h4 class="headline">{{ part.part }}</h4>
         <ul class="ingredients">
-          <li :key="ingredient.name" v-for="ingredient in part.ingredients">
+          <li
+            :key="`ingredient-${ingredientIndex}`"
+            v-for="(ingredient, ingredientIndex) in part.ingredients"
+          >
             <span class="mr-1">{{
               getScaledAmount(
                 selectedPan.diameter,
