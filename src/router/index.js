@@ -5,6 +5,7 @@ import PansView from "@/views/PansView.vue";
 import IngredientsView from "@/views/IngredientsView.vue";
 import ShoppingListView from "@/views/ShoppingListView.vue";
 import PreparationView from "@/views/PreparationView.vue";
+import InfoView from "@/views/InfoView";
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,7 @@ const router = new VueRouter({
     { path: "/ingredients", component: IngredientsView },
     { path: "/shopping-list", component: ShoppingListView },
     { path: "/preparation", component: PreparationView },
+    { path: "/info", component: InfoView },
   ],
 });
 

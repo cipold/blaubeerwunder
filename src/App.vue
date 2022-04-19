@@ -20,7 +20,11 @@
         <ContentDivider class="mb-0 mt-5" />
         Mit
         <BIconHeart></BIconHeart>
-        von Michael für Gryta
+        von <a href="https://cipold.de" class="text-muted">Michael</a> für
+        <a href="https://tatoryte.com" class="text-muted">Gryta</a> -
+        <router-link to="/info" class="text-muted"
+          >Info und Kontakt</router-link
+        >
       </footer>
     </div>
   </div>
@@ -51,8 +55,6 @@ export default {
     ...mapState("recipe", { recipeName: "name" }),
   },
 };
-
-// TODO add info page referencing open source content
 </script>
 
 <style lang="scss" scoped>
