@@ -23,3 +23,5 @@ export default new Vuex.Store({
     },
   ],
 });
+
+// TODO ask for permission to use localStorage / cookie dialog?
