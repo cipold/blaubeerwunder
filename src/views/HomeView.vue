@@ -9,11 +9,11 @@
 
     <ContentTeaser
       label="Formen"
-      to="pans"
+      to="/pans"
       :image="require('@/assets/icons/pan.svg')"
     >
       Passe das Rezept auf genau die
-      <router-link to="pans">Formen</router-link>
+      <router-link to="/pans">Formen</router-link>
       an, die du verwenden möchtest.
     </ContentTeaser>
 
@@ -21,11 +21,11 @@
 
     <ContentTeaser
       label="Zutaten"
-      to="ingredients"
+      to="/ingredients"
       :image="require('@/assets/icons/ingredients.svg')"
     >
       Plane die Mengen der
-      <router-link to="ingredients">Zutaten</router-link>
+      <router-link to="/ingredients">Zutaten</router-link>
       für deine Formen.
     </ContentTeaser>
 
@@ -33,11 +33,11 @@
 
     <ContentTeaser
       label="Einkaufsliste"
-      to="shopping-list"
+      to="/shopping-list"
       :image="require('@/assets/icons/invoice.svg')"
     >
       Erstelle deine
-      <router-link to="shopping-list">Einkaufsliste</router-link>
+      <router-link to="/shopping-list">Einkaufsliste</router-link>
       mit genau den Mengen, die du für deine Formen brauchst.
     </ContentTeaser>
 
@@ -45,11 +45,11 @@
 
     <ContentTeaser
       label="Zubereitung"
-      to="preparation"
+      to="/preparation"
       :image="require('@/assets/icons/preparation.svg')"
     >
       Wenn es so weit ist, dann tippe auf
-      <router-link to="preparation">Zubereitung</router-link>
+      <router-link to="/preparation">Zubereitung</router-link>
       und los geht's!
     </ContentTeaser>
   </div>
