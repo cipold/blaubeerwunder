@@ -10,18 +10,22 @@
         >
           <div class="d-flex">
             <BIconCheckCircleFill
-              class="align-self-center mr-3 active-pan"
+              class="align-self-center mr-3 pan-multi-select active"
               v-if="pan.active"
             ></BIconCheckCircleFill>
             <BIconCheckCircle
-              class="align-self-center mr-3 inactive-pan"
+              class="align-self-center mr-3 pan-multi-select"
               v-else
             ></BIconCheckCircle>
             <p
-              :class="
-                'h4 d-inline mr-4 mb-0 ' +
-                (pan.active ? 'active-pan' : 'inactive-pan')
-              "
+              :class="[
+                'h4',
+                'd-inline',
+                'mr-4',
+                'mb-0',
+                'pan-multi-select',
+                { active: pan.active },
+              ]"
             >
               {{ pan.label }}
             </p>

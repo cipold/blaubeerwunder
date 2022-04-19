@@ -26,6 +26,11 @@ $light: #fbedf1;
       format("svg");
 }
 
+@mixin send-flowers {
+  font-family: "Send Flowers", cursive;
+  font-weight: bold;
+}
+
 html,
 body {
   margin: 0;
@@ -74,8 +79,7 @@ body {
 }
 
 nav {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
+  @include send-flowers;
   font-size: 1.2rem;
   text-align: center;
   border-top: rgba($secondary, 0.3) solid 1px;
@@ -95,8 +99,7 @@ nav {
 }
 
 .main-title {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
+  @include send-flowers;
   color: var(--primary);
   text-align: center;
   text-shadow: 2px 2px var(--secondary);
@@ -114,9 +117,8 @@ nav {
   margin: 0 auto 20px auto;
 }
 
-.part {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
+.headline {
+  @include send-flowers;
   color: $medium;
 }
 
@@ -140,29 +142,29 @@ nav {
 }
 
 .card-header-title {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
+  @include send-flowers;
   font-size: 1.2rem;
   text-align: center;
   color: $darker;
 }
 
 .section {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
+  @include send-flowers;
   color: $medium;
 }
 
-.active-pan {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
+.pan {
+  @include send-flowers;
   color: $medium;
 }
 
-.inactive-pan {
-  font-family: "Send Flowers", cursive;
-  font-weight: bold;
+.pan-multi-select {
+  @include send-flowers;
   color: $lighter;
+}
+
+.pan-multi-select.active {
+  color: $medium !important;
 }
 
 @include media-breakpoint-up(sm) {

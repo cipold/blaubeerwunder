@@ -4,7 +4,7 @@
       <b-list-group flush>
         <b-list-group-item button v-b-modal.modal-pans>
           <div class="d-flex">
-            <p class="h4 part d-inline mr-4 mb-0">
+            <p class="h4 pan d-inline mr-4 mb-0">
               {{ selectedPan.label }}
             </p>
             <div class="align-self-center ml-auto">
@@ -52,7 +52,7 @@
             "
           >
             <div class="d-flex">
-              <p class="h4 part d-inline mr-4 mb-0">{{ pan.label }}</p>
+              <p class="h4 pan d-inline mr-4 mb-0">{{ pan.label }}</p>
               <div class="align-self-center ml-auto">
                 <span class="text-muted small">
                   <BIconSlashCircle></BIconSlashCircle> {{ pan.diameter }} cm

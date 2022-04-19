@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="h4 mt-0 text-center">
-      <router-link :to="to" class="part">{{ label }}</router-link>
+      <router-link :to="to" class="headline">{{ label }}</router-link>
     </p>
     <div class="d-flex">
       <img

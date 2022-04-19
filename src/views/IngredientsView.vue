@@ -20,9 +20,9 @@
       <b-card-body
         :key="part.part"
         v-for="(part, index) in parts"
-        :class="index ? 'pt-0' : ''"
+        :class="{ 'pt-0': index }"
       >
-        <h4 class="part">{{ part.part }}</h4>
+        <h4 class="headline">{{ part.part }}</h4>
         <ul class="ingredients">
           <li :key="ingredient.name" v-for="ingredient in part.ingredients">
             <span class="mr-1">{{

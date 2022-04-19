@@ -20,7 +20,7 @@
       <b-card-body
         :key="section.section"
         v-for="(section, index) in shoppingList"
-        :class="index ? 'pt-0' : ''"
+        :class="{ 'pt-0': index }"
       >
         <h4 class="section">{{ section.section }}</h4>
         <ul class="ingredients">
