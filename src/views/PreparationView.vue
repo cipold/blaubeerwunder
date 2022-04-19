@@ -2,7 +2,7 @@
   <div>
     <PageIntro :image="require('@/assets/icons/preparation.svg')">
       Wähle deine Form und los geht's!<br />
-      Hake erledigte Schritte ab, indem du drauf tippst.
+      Hake erledigte Schritte ab, indem du drauftippst.
     </PageIntro>
 
     <ContentDivider />
@@ -15,16 +15,18 @@
         <li
           :key="instruction.text"
           v-for="instruction in step.instructions"
-          :class="['mb-2', { 'instruction-checked': instruction.checked }]"
+          :class="['mb-3', { 'instruction-checked': instruction.checked }]"
         >
           <div v-on:click="toggle(instruction)" class="d-flex">
-            <span class="align-self-center">{{ instruction.text }}</span>
             <img
               v-if="instruction.icon === 'timer'"
               alt="instruction icon"
               src="@/assets/icons/bell.svg"
-              class="ml-auto align-self-center instruction-icon"
+              class="mr-3 align-self-center instruction-icon"
             />
+            <span class="align-self-center flex-grow-1">
+              {{ instruction.text }}
+            </span>
           </div>
           <ul class="instruction-ingredients">
             <li
@@ -167,23 +169,27 @@ export default {
 // TODO make addsTo visible in recipe steps
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /*noinspection CssUnusedSymbol*/
 .instruction-checked,
 .ingredient-checked {
   text-decoration: line-through;
   color: #a0a0a0;
+
+  img {
+    filter: grayscale(100%) opacity(50%);
+  }
 }
 
 .instructions {
-  list-style-type: decimal;
-  padding-left: 30px;
-  padding-right: 10px;
+  list-style-type: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .instruction-ingredients {
-  list-style-type: disc;
-  padding-left: 20px;
+  list-style-type: none;
+  padding-left: 15px;
 }
 
 .instruction-icon {

@@ -79,13 +79,13 @@ export default {
         scalesWith: "volume",
       },
       {
-        name: "Unbeh. Zitronen",
+        name: "Unbehandelte Zitronen",
         amount: 1,
         unit: undefined,
         amountInG: 50,
         store: "Früchte",
         part: "Quark-Mascarpone-Creme",
-        hint: "Abrieb u. Saft",
+        hint: "Abrieb und Saft",
         scalesWith: "volume",
       },
       {
@@ -187,7 +187,7 @@ export default {
         part: "Quark-Mascarpone-Creme",
         instructions: [
           {
-            text: "Heidelbeeren mit 1/4 des Puderzuckers pürieren.",
+            text: "Heidelbeeren mit ¼ des Puderzuckers pürieren.",
             checked: false,
             ingredients: [
               {
@@ -197,7 +197,7 @@ export default {
               },
               {
                 name: "Puderzucker",
-                relativeAmount: 1 / 4,
+                relativeAmount: 0.25,
                 checked: false,
                 addsTo: "Heidelbeerpüree",
               },
@@ -219,7 +219,7 @@ export default {
               },
               {
                 name: "Puderzucker",
-                relativeAmount: 3 / 4,
+                relativeAmount: 0.75,
                 checked: false,
                 addsTo: "Quark-Masse",
               },
@@ -234,83 +234,61 @@ export default {
                 addsTo: "Quark-Masse",
               },
               {
-                name: "Unbeh. Zitronen",
+                name: "Unbehandelte Zitronen",
                 checked: false,
                 addsTo: "Quark-Masse",
               },
             ],
           },
           {
-            text: "Von der Quark-Masse etwas weniger als die Hälfte für die obere Schicht abnehmen, kalt stellen.",
+            text: "Für die obere Schicht etwas weniger als die Hälfte der Quark-Masse abnehmen und kalt stellen.",
             checked: false,
             ingredients: [
               {
                 name: "Quark-Masse",
                 relativeAmount: 0.45,
                 checked: false,
-                addsTo: "Masse für die obere Schicht",
               },
             ],
           },
           {
-            text: "Restliche Quark-Masse auf 2 Schüsseln aufteilen, dabei für die mittlere Schicht etwas mehr abfüllen.",
+            text: "Für die mittlere Schicht etwas mehr als die Hälfte der verbleibenden Quark-Masse abfüllen und mit etwas mehr als der Hälfte des Heidelbeerpürees verrühren und kaltstellen.",
             checked: false,
             ingredients: [
               {
                 name: "Quark-Masse",
                 relativeAmount: 0.3,
                 checked: false,
-                addsTo: "Masse für die mittlere Schicht",
-              },
-              {
-                name: "Quark-Masse",
-                relativeAmount: 0.25,
-                checked: false,
-                addsTo: "Masse für die untere Schicht",
-              },
-            ],
-          },
-          {
-            text: "Masse für die mittlere Schicht mit etwas mehr als der Hälfte des Heidelbeerpürees verrühren, kaltstellen.",
-            checked: false,
-            ingredients: [
-              {
-                name: "Masse für die mittlere Schicht",
-                checked: false,
-                addsTo: "Mittlere Schicht",
               },
               {
                 name: "Heidelbeerpüree",
                 relativeAmount: 0.55,
                 checked: false,
-                addsTo: "Mittlere Schicht",
               },
             ],
           },
           {
-            text: "Für die untere Schicht restliches Heidelbeerpüree mit Himbeeren pürieren, mit der Quark-Masse für die untere Schicht verrühren.",
+            text: "Für die untere Schicht restliches Heidelbeerpüree mit Himbeeren pürieren und mit der restlichen Quark-Masse verrühren.",
             checked: false,
             ingredients: [
               {
                 name: "Heidelbeerpüree",
                 relativeAmount: 0.45,
                 checked: false,
-                addsTo: "Untere Schicht",
               },
               {
                 name: "Himbeeren",
                 checked: false,
-                addsTo: "Untere Schicht",
               },
               {
-                name: "Masse für die untere Schicht",
+                name: "Quark-Masse",
+                relativeAmount: 0.25,
                 checked: false,
-                addsTo: "Untere Schicht",
               },
             ],
           },
           {
-            text: "1/3 der Gelatine nach Packungsanleitung einweichen.",
+            text: "⅓ der Gelatine nach Packungsanleitung einweichen.",
             checked: false,
             ingredients: [
               {
@@ -332,32 +310,36 @@ export default {
             ],
           },
           {
-            text: "Gelatine auflösen, Temperaturausgleich durchführen und in die Quark-Masse einrühren.",
+            text: "Gelatine auflösen, Temperaturausgleich durchführen und in die Quark-Masse für die untere Schicht einrühren.",
             checked: false,
           },
           {
-            text: "Ca. 2-5 Minuten kühlstellen und 1/4 der Sahne unterheben.",
+            text: "Quark-Masse ein paar Minuten kühlstellen.",
             checked: false,
             icon: "timer",
+          },
+          {
+            text: "¼ der steifen Sahne in die Quark-Masse zu einer Creme unterheben.",
+            checked: false,
             ingredients: [
               {
                 name: "Steife Sahne",
                 checked: false,
-                relativeAmount: 1 / 4,
+                relativeAmount: 0.25,
               },
             ],
           },
           {
-            text: "Creme auf den Boden geben und glattstreichen.",
+            text: "Creme auf den Butterkeks-Boden geben und glattstreichen.",
             checked: false,
           },
           {
-            text: "Torte mind. 30 Minuten kaltstellen.",
+            text: "Torte mindestens 30 Minuten kaltstellen.",
             checked: false,
             icon: "timer",
           },
           {
-            text: "Für die mittlere Schicht wieder 1/3 der Gelatine einweichen.",
+            text: "Für die mittlere Schicht wieder ⅓ der Gelatine einweichen.",
             checked: false,
             ingredients: [
               {
@@ -368,8 +350,24 @@ export default {
             ],
           },
           {
-            text: "Heidelbeer-Quark-Creme zubereiten (s.o.)", // TODO expandieren
+            text: "Gelatine auflösen, Temperaturausgleich durchführen und in die Quark-Masse für die mittlere Schicht einrühren.",
             checked: false,
+          },
+          {
+            text: "Quark-Masse ein paar Minuten kühlstellen.",
+            checked: false,
+            icon: "timer",
+          },
+          {
+            text: "Diesmal etwas mehr der steifen Sahne in die Quark-Masse zu einer Creme unterheben.",
+            checked: false,
+            ingredients: [
+              {
+                name: "Steife Sahne",
+                checked: false,
+                relativeAmount: 0.3,
+              },
+            ],
           },
           {
             text: "Heidelbeer-Quark-Creme auf die untere Schicht geben und glattstreichen.",
@@ -392,22 +390,31 @@ export default {
             ],
           },
           {
-            text: "Weiße Quark-Creme zubereiten (s.o.), dabei die restliche Sahne unterheben.", // TODO expandieren
+            text: "Gelatine auflösen, Temperaturausgleich durchführen und in die Quark-Masse für die obere Schicht einrühren.",
+            checked: false,
+          },
+          {
+            text: "Quark-Masse ein paar Minuten kühlstellen.",
+            checked: false,
+            icon: "timer",
+          },
+          {
+            text: "Restliche steife Sahne in die Quark-Masse zu einer Creme unterheben.",
             checked: false,
             ingredients: [
               {
                 name: "Steife Sahne",
                 checked: false,
-                relativeAmount: 3 / 4,
+                relativeAmount: 0.45,
               },
             ],
           },
           {
-            text: "Creme einfüllen und glattstreichen.",
+            text: "Creme auf die mittlere Schicht geben und glattstreichen.",
             checked: false,
           },
           {
-            text: "Torte mind. 4 Stunden kalt stellen.",
+            text: "Torte mindestens 4 Stunden kalt stellen.",
             checked: false,
             icon: "timer",
           },
@@ -431,7 +438,7 @@ export default {
             ],
           },
           {
-            text: "Sahne kurz aufkochen, vom Herd nehmen.",
+            text: "Sahne kurz aufkochen und dann vom Herd nehmen.",
             checked: false,
             ingredients: [
               {
@@ -463,7 +470,7 @@ export default {
             ],
           },
           {
-            text: "Mind. 30 Minuten kaltstellen.",
+            text: "Mindestens 30 Minuten kaltstellen.",
             checked: false,
             icon: "timer",
           },
