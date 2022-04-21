@@ -75,7 +75,6 @@
       "amountInG": 50,
       "store": "Früchte",
       "part": "Quark-Mascarpone-Creme",
-      "hint": "Abrieb und Saft",
       "scalesWith": "volume"
     },
     {

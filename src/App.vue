@@ -21,10 +21,8 @@
         Mit
         <BIconHeart />
         von <a href="https://cipold.de" class="text-muted">Michael</a> für
-        <a href="https://tatoryte.com" class="text-muted">Gryta</a> -
-        <router-link to="/info" class="text-muted"
-          >Info und Kontakt</router-link
-        >
+        <a href="https://tatoryte.com" class="text-muted">Gryta</a> |
+        <router-link to="/info">Info</router-link>
       </footer>
     </div>
   </div>

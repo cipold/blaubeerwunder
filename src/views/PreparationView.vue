@@ -61,11 +61,6 @@
                 >{{ parts[step.part][ingredient.name].unit }}</span
               >
               <strong>{{ parts[step.part][ingredient.name].name }}</strong>
-              <span
-                class="ml-1 text-muted"
-                v-if="parts[step.part][ingredient.name].hint"
-                >({{ parts[step.part][ingredient.name].hint }})</span
-              >
             </li>
           </ul>
         </li>

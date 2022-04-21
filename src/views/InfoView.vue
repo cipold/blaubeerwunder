@@ -51,7 +51,7 @@
         src="@/assets/icons/wheat.svg"
         class="info-image mr-3 align-self-center"
       />
-      <p class="flex-grow-1 align-self-center mb-0">
+      <p class="flex-grow-1 align-self-center mb-0 text-break">
         Den Quelltext dieser App findest du unter
         <a href="https://github.com/cipold/blaubeerwunder"
           >https://github.com/cipold/blaubeerwunder</a
@@ -73,7 +73,7 @@
         src="@/assets/icons/bell.svg"
         class="info-image mr-3 align-self-center"
       />
-      <p class="flex-grow-1 align-self-center mb-0">
+      <p class="flex-grow-1 align-self-center mb-0 text-break">
         Bei Fragen oder Anregungen schreibe einfach eine Mail an
         <a href="mailto:blaubeerwunder@cipold.de">blaubeerwunder@cipold.de</a>.
       </p>
@@ -94,7 +94,7 @@ export default {
 
 <style scoped>
 .info-image {
-  width: 64px;
-  height: 64px;
+  width: 50px;
+  height: 50px;
 }
 </style>

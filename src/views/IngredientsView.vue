@@ -32,9 +32,6 @@
               ingredient.unit
             }}</span>
             <strong>{{ ingredient.name }}</strong>
-            <span class="ml-1 text-muted" v-if="ingredient.hint"
-              >({{ ingredient.hint }})</span
-            >
           </li>
         </ul>
       </b-card-body>

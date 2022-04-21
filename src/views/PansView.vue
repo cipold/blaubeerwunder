@@ -10,9 +10,9 @@
     <b-card no-body>
       <b-list-group flush>
         <b-list-group-item v-for="(pan, index) in pans" :key="`pan-${index}`">
-          <div class="d-flex flex-wrap">
+          <div class="d-flex align-items-center">
             <span
-              class="text-muted mr-2 align-self-center"
+              class="text-muted mr-2"
               title="Anpassen"
               v-b-toggle="`pan-${index}`"
             >
@@ -20,7 +20,7 @@
             </span>
             <PanLine :pan="pan" class="flex-grow-1" />
             <b-link
-              class="text-muted ml-2 align-self-center"
+              class="text-muted ml-2"
               v-if="pans.length > 1"
               @click="remove(index)"
               title="Form entfernen"
@@ -78,11 +78,11 @@
           </b-collapse>
         </b-list-group-item>
       </b-list-group>
-      <b-card-footer class="d-flex">
-        <b-link class="text-muted small" @click="add">
+      <b-card-footer class="d-flex flex-wrap" style="gap: 10px">
+        <b-link class="text-muted small flex-grow-1" @click="add">
           <BIconPlusCircle class="mr-1" />Form hinzufügen
         </b-link>
-        <b-link class="ml-auto text-muted small" @click="reset()">
+        <b-link class="text-muted small" @click="reset()">
           <BIconXCircle class="mr-1" />alle zurücksetzen
         </b-link>
       </b-card-footer>
