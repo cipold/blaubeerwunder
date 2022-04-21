@@ -15,9 +15,17 @@
         <li
           :key="`instruction-${stepIndex}-${instructionIndex}`"
           v-for="(instruction, instructionIndex) in step.instructions"
-          :class="['mb-3', { 'instruction-checked': instruction.checked }]"
+          :class="[
+            'mb-3',
+            {
+              'instruction-checked': checked(stepIndex, instructionIndex),
+            },
+          ]"
         >
-          <div v-on:click="toggle(instruction)" class="d-flex">
+          <div
+            v-on:click="toggle({ stepIndex, instructionIndex })"
+            class="d-flex"
+          >
             <img
               v-if="instruction.icon === 'timer'"
               alt="instruction icon"
@@ -32,8 +40,14 @@
             <li
               v-for="(ingredient, ingredientIndex) in instruction.ingredients"
               :key="`ingredient-${stepIndex}-${instructionIndex}-${ingredientIndex}`"
-              :class="{ 'ingredient-checked': ingredient.checked }"
-              @click="toggle(ingredient)"
+              :class="{
+                'ingredient-checked': checked(
+                  stepIndex,
+                  instructionIndex,
+                  ingredientIndex
+                ),
+              }"
+              @click="toggle({ stepIndex, instructionIndex, ingredientIndex })"
             >
               <span class="mr-1">{{
                 getScaledAmount(
@@ -60,11 +74,16 @@
     <div class="text-center mt-4">
       <img alt="cake" class="complete-image" src="@/assets/icons/cake.svg" />
     </div>
+    <div class="text-center mt-4">
+      <b-link class="text-muted small" @click="reset()">
+        <BIconXCircle class="mr-1" />Rezept zurücksetzen
+      </b-link>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters, mapState, mapMutations } from "vuex";
 import PanSelect from "@/components/PanSelect";
 
 export default {
@@ -76,13 +95,14 @@ export default {
     PanSelect,
   },
   computed: {
-    ...mapState("pans", ["pans"]),
+    ...mapState("pans", ["pans", { selectedPanIndex: "selected" }]),
     ...mapState("recipe", {
       recipeSteps: "steps",
       recipeIngredients: "ingredients",
       recipePan: "pan",
     }),
     ...mapGetters("pans", ["selectedPan"]),
+    ...mapGetters("recipe", ["checked"]),
     parts() {
       const ingredientsByPart = this.recipeIngredients.reduce(
         (parts, ingredient) => {
@@ -131,6 +151,7 @@ export default {
     },
   },
   methods: {
+    ...mapMutations("recipe", ["toggle", "reset"]),
     getScaledAmount: function (ingredient, relativeAmount) {
       let amount = ingredient.amount * (relativeAmount ? relativeAmount : 1);
       if (ingredient.scalesWith === "volume") {
@@ -159,9 +180,6 @@ export default {
         return Math.round(amount);
       }
       return parseFloat(amount.toFixed(1));
-    },
-    toggle: function (part) {
-      part.checked = !(part.checked === true);
     },
   },
 };

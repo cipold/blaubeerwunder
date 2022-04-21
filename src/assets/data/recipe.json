@@ -1,0 +1,407 @@
+{
+  "name": "Blaubeerwunder",
+  "pan": {
+    "diameter": 20.0,
+    "height": 8.0
+  },
+  "ingredients": [
+    {
+      "name": "Butter",
+      "amount": 75,
+      "unit": "g",
+      "store": "Kühlregal",
+      "part": "Butterkeks-Boden",
+      "scalesWith": "area"
+    },
+    {
+      "name": "Kakao-Butterkekse",
+      "amount": 100,
+      "unit": "g",
+      "store": "Süßwaren",
+      "part": "Butterkeks-Boden",
+      "scalesWith": "area"
+    },
+    {
+      "name": "Heidelbeeren",
+      "amount": 200,
+      "unit": "g",
+      "store": "Früchte",
+      "part": "Quark-Mascarpone-Creme",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Puderzucker",
+      "amount": 200,
+      "unit": "g",
+      "store": "Backzutaten",
+      "part": "Quark-Mascarpone-Creme",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Magerquark",
+      "amount": 750,
+      "unit": "g",
+      "store": "Kühlregal",
+      "part": "Quark-Mascarpone-Creme",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Mascarpone",
+      "amount": 250,
+      "unit": "g",
+      "store": "Kühlregal",
+      "part": "Quark-Mascarpone-Creme",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Salz",
+      "amount": 1,
+      "unit": "Prise",
+      "amountInG": 0,
+      "part": "Quark-Mascarpone-Creme"
+    },
+    {
+      "name": "Vanille-Zucker",
+      "amount": 2,
+      "unit": "Pck.",
+      "amountInG": 8,
+      "store": "Backzutaten",
+      "part": "Quark-Mascarpone-Creme",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Unbehandelte Zitronen",
+      "amount": 1,
+      "amountInG": 50,
+      "store": "Früchte",
+      "part": "Quark-Mascarpone-Creme",
+      "hint": "Abrieb und Saft",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Himbeeren",
+      "amount": 100,
+      "unit": "g",
+      "store": "Früchte",
+      "part": "Quark-Mascarpone-Creme",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Gelatine",
+      "amount": 9,
+      "unit": "Blatt",
+      "amountInG": 0,
+      "store": "Backzutaten",
+      "part": "Quark-Mascarpone-Creme",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Sahne",
+      "amount": 150,
+      "unit": "ml",
+      "amountInG": 152,
+      "store": "Kühlregal",
+      "part": "Quark-Mascarpone-Creme",
+      "scalesWith": "volume"
+    },
+    {
+      "name": "Zartbitter-Kuvertüre",
+      "amount": 50,
+      "unit": "g",
+      "store": "Backzutaten",
+      "part": "Glasur, Belag und Garnitur",
+      "scalesWith": "area"
+    },
+    {
+      "name": "Sahne",
+      "amount": 50,
+      "unit": "ml",
+      "amountInG": 51,
+      "store": "Kühlregal",
+      "part": "Glasur, Belag und Garnitur",
+      "scalesWith": "area"
+    },
+    {
+      "name": "Heidelbeeren",
+      "amount": 275,
+      "unit": "g",
+      "store": "Früchte",
+      "part": "Glasur, Belag und Garnitur",
+      "scalesWith": "area"
+    },
+    {
+      "name": "Jasmin- oder Phloxblüten",
+      "amount": 10,
+      "amountInG": 0,
+      "store": "Backzutaten",
+      "part": "Glasur, Belag und Garnitur",
+      "scalesWith": "area"
+    }
+  ],
+  "steps": [
+    {
+      "part": "Butterkeks-Boden",
+      "instructions": [
+        {
+          "text": "Boden der Form mit Backpapier auslegen."
+        },
+        {
+          "text": "Butter schmelzen.",
+          "ingredients": [
+            {
+              "name": "Butter"
+            }
+          ]
+        },
+        {
+          "text": "Kekse fein zerbröseln und mit der Butter mischen.",
+          "ingredients": [
+            {
+              "name": "Kakao-Butterkekse"
+            }
+          ]
+        },
+        {
+          "text": "Keksmasse in der Form verteilen und andrücken."
+        }
+      ]
+    },
+    {
+      "part": "Quark-Mascarpone-Creme",
+      "instructions": [
+        {
+          "text": "Heidelbeeren mit ¼ des Puderzuckers pürieren.",
+          "ingredients": [
+            {
+              "name": "Heidelbeeren",
+              "addsTo": "Heidelbeerpüree"
+            },
+            {
+              "name": "Puderzucker",
+              "relativeAmount": 0.25,
+              "addsTo": "Heidelbeerpüree"
+            }
+          ]
+        },
+        {
+          "text": "Quark, Mascarpone, restlichen Puderzucker, Salz, Vanille-Zucker, Abrieb und Saft der Zitrone gut verrühren.",
+          "ingredients": [
+            {
+              "name": "Magerquark",
+              "addsTo": "Quark-Masse"
+            },
+            {
+              "name": "Mascarpone",
+              "addsTo": "Quark-Masse"
+            },
+            {
+              "name": "Puderzucker",
+              "relativeAmount": 0.75,
+              "addsTo": "Quark-Masse"
+            },
+            {
+              "name": "Salz",
+              "addsTo": "Quark-Masse"
+            },
+            {
+              "name": "Vanille-Zucker",
+              "addsTo": "Quark-Masse"
+            },
+            {
+              "name": "Unbehandelte Zitronen",
+              "addsTo": "Quark-Masse"
+            }
+          ]
+        },
+        {
+          "text": "Für die obere Schicht etwas weniger als die Hälfte der Quark-Masse abnehmen und kalt stellen.",
+          "ingredients": [
+            {
+              "name": "Quark-Masse",
+              "relativeAmount": 0.45
+            }
+          ]
+        },
+        {
+          "text": "Für die mittlere Schicht etwas mehr als die Hälfte der verbleibenden Quark-Masse abfüllen und mit etwas mehr als der Hälfte des Heidelbeerpürees verrühren und kaltstellen.",
+          "ingredients": [
+            {
+              "name": "Quark-Masse",
+              "relativeAmount": 0.3
+            },
+            {
+              "name": "Heidelbeerpüree",
+              "relativeAmount": 0.55
+            }
+          ]
+        },
+        {
+          "text": "Für die untere Schicht restliches Heidelbeerpüree mit Himbeeren pürieren und mit der restlichen Quark-Masse verrühren.",
+          "ingredients": [
+            {
+              "name": "Heidelbeerpüree",
+              "relativeAmount": 0.45
+            },
+            {
+              "name": "Himbeeren"
+            },
+            {
+              "name": "Quark-Masse",
+              "relativeAmount": 0.25
+            }
+          ]
+        },
+        {
+          "text": "⅓ der Gelatine nach Packungsanleitung einweichen.",
+          "ingredients": [
+            {
+              "name": "Gelatine",
+              "relativeAmount": 0.33333
+            }
+          ]
+        },
+        {
+          "text": "Sahne steif schlagen und kühlstellen.",
+          "ingredients": [
+            {
+              "name": "Sahne",
+              "addsTo": "Steife Sahne"
+            }
+          ]
+        },
+        {
+          "text": "Gelatine auflösen, Temperaturausgleich durchführen und in die Quark-Masse für die untere Schicht einrühren."
+        },
+        {
+          "text": "Quark-Masse ein paar Minuten kühlstellen.",
+          "icon": "timer"
+        },
+        {
+          "text": "¼ der steifen Sahne in die Quark-Masse zu einer Creme unterheben.",
+          "ingredients": [
+            {
+              "name": "Steife Sahne",
+              "relativeAmount": 0.25
+            }
+          ]
+        },
+        {
+          "text": "Creme auf den Butterkeks-Boden geben und glattstreichen."
+        },
+        {
+          "text": "Torte mindestens 30 Minuten kaltstellen.",
+          "icon": "timer"
+        },
+        {
+          "text": "Für die mittlere Schicht wieder ⅓ der Gelatine einweichen.",
+          "ingredients": [
+            {
+              "name": "Gelatine",
+              "relativeAmount": 0.33333
+            }
+          ]
+        },
+        {
+          "text": "Gelatine auflösen, Temperaturausgleich durchführen und in die Quark-Masse für die mittlere Schicht einrühren."
+        },
+        {
+          "text": "Quark-Masse ein paar Minuten kühlstellen.",
+          "icon": "timer"
+        },
+        {
+          "text": "Diesmal etwas mehr der steifen Sahne in die Quark-Masse zu einer Creme unterheben.",
+          "ingredients": [
+            {
+              "name": "Steife Sahne",
+              "relativeAmount": 0.3
+            }
+          ]
+        },
+        {
+          "text": "Heidelbeer-Quark-Creme auf die untere Schicht geben und glattstreichen."
+        },
+        {
+          "text": "Torte wieder 30 Minuten kalt stellen.",
+          "icon": "timer"
+        },
+        {
+          "text": "Für die obere Schicht restliche Gelatine einweichen.",
+          "ingredients": [
+            {
+              "name": "Gelatine",
+              "relativeAmount": 0.33334
+            }
+          ]
+        },
+        {
+          "text": "Gelatine auflösen, Temperaturausgleich durchführen und in die Quark-Masse für die obere Schicht einrühren."
+        },
+        {
+          "text": "Quark-Masse ein paar Minuten kühlstellen.",
+          "icon": "timer"
+        },
+        {
+          "text": "Restliche steife Sahne in die Quark-Masse zu einer Creme unterheben.",
+          "ingredients": [
+            {
+              "name": "Steife Sahne",
+              "relativeAmount": 0.45
+            }
+          ]
+        },
+        {
+          "text": "Creme auf die mittlere Schicht geben und glattstreichen."
+        },
+        {
+          "text": "Torte mindestens 4 Stunden kalt stellen.",
+          "icon": "timer"
+        },
+        {
+          "text": "Springform entfernen."
+        }
+      ]
+    },
+    {
+      "part": "Glasur, Belag und Garnitur",
+      "instructions": [
+        {
+          "text": "Kuvertüre hacken.",
+          "ingredients": [
+            {
+              "name": "Zartbitter-Kuvertüre"
+            }
+          ]
+        },
+        {
+          "text": "Sahne kurz aufkochen und dann vom Herd nehmen.",
+          "ingredients": [
+            {
+              "name": "Sahne"
+            }
+          ]
+        },
+        {
+          "text": "Kuvertüre unter Rühren in der Sahne schmelzen."
+        },
+        {
+          "text": "Schoko-Glasur zügig aufstreichen."
+        },
+        {
+          "text": "Mit Heidelbeeren und Blüten belegen.",
+          "ingredients": [
+            {
+              "name": "Heidelbeeren"
+            },
+            {
+              "name": "Jasmin- oder Phloxblüten"
+            }
+          ]
+        },
+        {
+          "text": "Mindestens 30 Minuten kaltstellen.",
+          "icon": "timer"
+        }
+      ]
+    }
+  ]
+}

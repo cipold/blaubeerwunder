@@ -54,6 +54,10 @@ export default {
   computed: {
     ...mapState("recipe", { recipeName: "name" }),
   },
+  beforeCreate() {
+    this.$store.commit("pans/initialize");
+    this.$store.commit("recipe/initialize");
+  },
 };
 </script>
 

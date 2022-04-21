@@ -20,14 +20,22 @@ const defaultState = {
 
 export default {
   namespaced: true,
-  state:
-    JSON.parse(window.localStorage.getItem("vuex/pans")) || clone(defaultState),
+  state: {
+    pans: [],
+    selected: 0,
+  },
   getters: {
     selectedPan: (state) => state.pans[state.selected],
     activePans: (state) => state.pans.filter((pan) => pan.active),
   },
   mutations: {
-    set: (state, pans) => (state.pans = pans),
+    set: (state, pans) => {
+      state.pans = pans;
+      state.selected = Math.max(
+        Math.min(state.selected, state.pans.length - 1),
+        0
+      );
+    },
     add: (state) =>
       state.pans.push({
         label: "Neue Form",
@@ -50,6 +58,14 @@ export default {
     update: (state, { index, key, value }) => (state.pans[index][key] = value),
     toggle: (state, index) =>
       (state.pans[index].active = !state.pans[index].active),
+    initialize: (state) => {
+      const storageState = window.localStorage.getItem("vuex/pans");
+      if (storageState) {
+        Object.assign(state, JSON.parse(storageState));
+      } else {
+        Object.assign(state, clone(defaultState));
+      }
+    },
   },
   actions: {
     add({ commit }) {
