@@ -10,30 +10,13 @@
     <b-card no-body>
       <b-list-group flush>
         <b-list-group-item v-for="(pan, index) in pans" :key="`pan-${index}`">
-          <div class="d-flex align-items-center">
-            <span
-              class="text-muted mr-2"
-              title="Anpassen"
-              v-b-toggle="`pan-${index}`"
-            >
-              <BIconPencil />
-            </span>
-            <PanLine :pan="pan" class="flex-grow-1" />
-            <b-link
-              class="text-muted ml-2"
-              v-if="pans.length > 1"
-              @click="remove(index)"
-              title="Form entfernen"
-            >
-              <BIconTrash />
-            </b-link>
-          </div>
+          <PanLine :pan="pan" class="flex-grow-1" v-b-toggle="`pan-${index}`" />
 
           <b-collapse :id="`pan-${index}`" accordion="pans">
             <div class="mt-3">
               <b-row class="my-1">
                 <b-col cols="3">
-                  <label>Name:</label>
+                  <label class="align-middle">Name:</label>
                 </b-col>
                 <b-col cols="9">
                   <b-input
@@ -74,12 +57,22 @@
                   </b-input-group>
                 </b-col>
               </b-row>
+              <div class="text-right mt-2">
+                <b-link
+                  class="text-muted small"
+                  v-if="pans.length > 1"
+                  @click="remove(index)"
+                  title="Form entfernen"
+                >
+                  <BIconTrash class="mr-1" />entfernen
+                </b-link>
+              </div>
             </div>
           </b-collapse>
         </b-list-group-item>
       </b-list-group>
-      <b-card-footer class="d-flex flex-wrap" style="gap: 10px">
-        <b-link class="text-muted small flex-grow-1" @click="add">
+      <b-card-footer class="d-flex flex-wrap">
+        <b-link class="text-muted small flex-grow-1 mr-3" @click="add">
           <BIconPlusCircle class="mr-1" />Form hinzufügen
         </b-link>
         <b-link class="text-muted small" @click="reset()">

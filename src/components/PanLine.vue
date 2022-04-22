@@ -1,15 +1,23 @@
 <template>
   <div class="d-flex align-items-center">
-    <BIconCheckCircleFill class="mr-2 pan active" v-if="showCheck && active" />
-    <BIconCheckCircle class="mr-2 pan" v-if="showCheck && !active" />
+    <BIconCheckCircleFill class="mr-3 pan active" v-if="showCheck && active" />
+    <BIconCheckCircle class="mr-3 pan" v-if="showCheck && !active" />
     <div
-      class="d-flex align-items-center flex-grow-1 flex-wrap d-flex justify-content-around"
-      style="column-gap: 10px"
+      class="d-flex align-items-center flex-grow-1 flex-wrap d-flex justify-content-between"
     >
-      <span :class="['h4', 'mb-0', 'pan', 'flex-shrink-0', { active: active }]">
+      <span
+        :class="[
+          'h4',
+          'mb-0',
+          'mr-3',
+          'pan',
+          'flex-shrink-0',
+          { active: active },
+        ]"
+      >
         {{ pan.label }}
       </span>
-      <div class="d-flex">
+      <div class="d-flex flex-shrink-0">
         <span class="text-muted mr-1 small flex-shrink-0">
           <BIconSlashCircle class="mr-1" />{{ pan.diameter
           }}<span class="ml-1">cm</span>
