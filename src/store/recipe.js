@@ -1,6 +1,7 @@
 import recipe from "@/assets/data/recipe.json";
 
 // TODO move common recipe functions to store getters
+// TODO keep checked state per pan (maybe move checked state to preparation store which accesses pans and recipe module)
 
 function initialChecked(steps) {
   const checked = {};
