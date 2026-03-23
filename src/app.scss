@@ -7,17 +7,20 @@ $lighter: #e1c2cb;
 $light: #fbedf1;
 
 :root {
+  --primary: #{$primary};
   --darker: #{$darker};
   --medium: #{$medium};
+  --secondary: #{$secondary};
   --lighter: #{$lighter};
+  --light: #{$light};
 }
 
-@import "node_modules/bootstrap/scss/bootstrap.scss";
-@import "node_modules/bootstrap-vue/src/index.scss";
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
 @font-face {
-  font-family: "Send Flowers";
-  src: url("assets/fonts/send-flowers-v1-latin-regular.woff2") format("woff2");
+  font-family: 'Send Flowers';
+  src: url('assets/fonts/send-flowers-v1-latin-regular.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -26,10 +29,9 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-}
 
-body {
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 100% 50%,
       transparent 20%,
       var(--lighter) 21%,
@@ -48,10 +50,18 @@ body {
       0 -50px;
   background-color: var(--secondary) !important;
   background-size: 75px 100px;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .headline {
-  font-family: "Send Flowers", cursive;
+  font-family: 'Send Flowers', cursive;
   font-weight: bold;
   color: var(--medium);
 }

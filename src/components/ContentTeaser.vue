@@ -4,11 +4,7 @@
       <router-link :to="to" class="headline">{{ label }}</router-link>
     </p>
     <div class="d-flex">
-      <img
-        alt="Teaser image"
-        :src="image"
-        class="teaser-image mr-3 align-self-center"
-      />
+      <img alt="Teaser image" :src="image" class="teaser-image me-3 align-self-center" />
       <p class="mb-0 align-self-center">
         <slot></slot>
       </p>
@@ -16,15 +12,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "ContentTeaser",
-  props: {
-    label: String,
-    to: String,
-    image: String,
-  },
-};
+<script setup>
+defineProps({
+  label: String,
+  to: String,
+  image: String,
+})
 </script>
 
 <style scoped>

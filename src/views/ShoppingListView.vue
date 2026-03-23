@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageIntro :image="require('@/assets/icons/invoice.svg')">
+    <PageIntro :image="invoiceIcon">
       Wähle alle Formen aus, für die du<br />
       Zutaten einkaufen möchtest.
     </PageIntro>
@@ -9,8 +9,9 @@
 
     <PanMultiSelect class="mb-4" />
 
-    <b-card no-body>
-      <b-card-body
+    <div class="card">
+      <div
+        class="card-body m-1"
         :key="`section-${sectionIndex}`"
         v-for="(section, sectionIndex) in shoppingList"
         :class="{ 'pt-0': sectionIndex }"
@@ -21,107 +22,81 @@
             :key="`ingredient-${ingredientIndex}`"
             v-for="(ingredient, ingredientIndex) in section.ingredients"
           >
-            <span class="mr-1">{{
-              presentAmount(ingredient.amount, ingredient.unit)
-            }}</span>
-            <span class="mr-1" v-if="ingredient.unit">{{
-              ingredient.unit
-            }}</span>
+            <span class="me-1">{{ presentAmount(ingredient.amount, ingredient.unit) }}</span>
+            <span class="me-1" v-if="ingredient.unit">{{ ingredient.unit }}</span>
             <strong>{{ ingredient.name }}</strong>
           </li>
         </ul>
-      </b-card-body>
-    </b-card>
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
-import { mapGetters, mapState } from "vuex";
-import PanMultiSelect from "@/components/PanMultiSelect";
+<script setup>
+import { computed } from 'vue'
+import { usePansStore } from '@/stores/pans'
+import { useRecipeStore } from '@/stores/recipe'
+import PanMultiSelect from '@/components/PanMultiSelect.vue'
+import invoiceIcon from '@/assets/icons/invoice.svg'
 
-export default {
-  name: "ShoppingListView",
-  metaInfo: {
-    title: "Einkaufsliste",
-  },
-  components: {
-    PanMultiSelect,
-  },
-  computed: {
-    ...mapState("recipe", {
-      recipePan: "pan",
-      recipeIngredients: "ingredients",
-    }),
-    ...mapGetters("pans", ["activePans"]),
-    shoppingList() {
-      return this.recipeIngredients.reduce((parts, ingredient) => {
-        const section = ingredient.store;
-        if (section) {
-          if (!parts.find((p) => p.section === section)) {
-            parts.push({
-              section: section,
-              ingredients: [],
-            });
-          }
-          let amount = 0;
-          for (const pan of this.activePans) {
-            amount += this.getScaledAmount(
-              pan.diameter,
-              pan.height,
-              ingredient
-            );
-          }
+const pansStore = usePansStore()
+const recipeStore = useRecipeStore()
 
-          const ingredients = parts.find(
-            (p) => p.section === section
-          ).ingredients;
-          const existingIngredient = ingredients.find(
-            (i) => i.name === ingredient.name
-          );
-          if (
-            existingIngredient &&
-            existingIngredient.unit === ingredient.unit
-          ) {
-            existingIngredient.amount += amount;
-          } else {
-            const copy = Object.assign({}, ingredient);
-            copy.amount = amount;
-            ingredients.push(copy);
-          }
-        }
-        return parts;
-      }, []);
-    },
-  },
-  methods: {
-    getScaledAmount: function (diameter, height, ingredient) {
-      let amount = ingredient.amount;
-      if (ingredient.scalesWith === "volume") {
-        const getVolume = (diameter, height) =>
-          0.25 * diameter * diameter * height;
-        const recipePanVolume = getVolume(
-          this.recipePan.diameter,
-          this.recipePan.height
-        );
-        const panVolume = getVolume(diameter, height);
-        amount *= panVolume / recipePanVolume;
-      } else if (ingredient.scalesWith === "area") {
-        const getArea = (diameter) => 0.25 * diameter * diameter;
-        const recipePanArea = getArea(this.recipePan.diameter);
-        const panArea = getArea(diameter);
-        amount *= panArea / recipePanArea;
+const recipePan = computed(() => recipeStore.pan)
+const recipeIngredients = computed(() => recipeStore.ingredients)
+const activePans = computed(() => pansStore.activePans)
+
+const shoppingList = computed(() => {
+  return recipeIngredients.value.reduce((parts, ingredient) => {
+    const section = ingredient.store
+    if (section) {
+      if (!parts.find((p) => p.section === section)) {
+        parts.push({
+          section: section,
+          ingredients: [],
+        })
+      }
+      let amount = 0
+      for (const pan of activePans.value) {
+        amount += getScaledAmount(pan.diameter, pan.height, ingredient)
       }
 
-      return this.presentAmount(amount, ingredient.unit);
-    },
-    presentAmount(amount, unit) {
-      if (unit === "Prise" || amount > 5) {
-        return Math.round(amount);
+      const ingredients = parts.find((p) => p.section === section).ingredients
+      const existingIngredient = ingredients.find((i) => i.name === ingredient.name)
+      if (existingIngredient && existingIngredient.unit === ingredient.unit) {
+        existingIngredient.amount += amount
+      } else {
+        const copy = { ...ingredient, amount }
+        ingredients.push(copy)
       }
-      return parseFloat(amount.toFixed(1));
-    },
-  },
-};
+    }
+    return parts
+  }, [])
+})
+
+function getScaledAmount(diameter, height, ingredient) {
+  let amount = ingredient.amount
+  if (ingredient.scalesWith === 'volume') {
+    const getVolume = (d, h) => 0.25 * d * d * h
+    const recipePanVolume = getVolume(recipePan.value.diameter, recipePan.value.height)
+    const panVolume = getVolume(diameter, height)
+    amount *= panVolume / recipePanVolume
+  } else if (ingredient.scalesWith === 'area') {
+    const getArea = (d) => 0.25 * d * d
+    const recipePanArea = getArea(recipePan.value.diameter)
+    const panArea = getArea(diameter)
+    amount *= panArea / recipePanArea
+  }
+
+  return presentAmount(amount, ingredient.unit)
+}
+
+function presentAmount(amount, unit) {
+  if (unit === 'Prise' || amount > 5) {
+    return Math.round(amount)
+  }
+  return parseFloat(amount.toFixed(1))
+}
 </script>
 
 <style scoped>

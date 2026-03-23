@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageIntro :image="require('@/assets/icons/preparation.svg')">
+    <PageIntro :image="preparationIcon">
       Wähle deine Form und los geht's!<br />
       Hake erledigte Schritte ab, indem du drauftippst.
     </PageIntro>
@@ -22,15 +22,12 @@
             },
           ]"
         >
-          <div
-            v-on:click="toggle({ stepIndex, instructionIndex })"
-            class="d-flex"
-          >
+          <div @click="toggle({ stepIndex, instructionIndex })" class="d-flex cursor-pointer">
             <img
               v-if="instruction.icon === 'timer'"
               alt="instruction icon"
-              src="@/assets/icons/bell.svg"
-              class="mr-3 align-self-center instruction-icon"
+              :src="bellIcon"
+              class="me-3 align-self-center instruction-icon"
             />
             <span class="align-self-center flex-grow-1">
               {{ instruction.text }}
@@ -40,26 +37,20 @@
             <li
               v-for="(ingredient, ingredientIndex) in instruction.ingredients"
               :key="`ingredient-${stepIndex}-${instructionIndex}-${ingredientIndex}`"
-              :class="{
-                'ingredient-checked': checked(
-                  stepIndex,
-                  instructionIndex,
-                  ingredientIndex
-                ),
-              }"
+              :class="[
+                'cursor-pointer',
+                {
+                  'ingredient-checked': checked(stepIndex, instructionIndex, ingredientIndex),
+                },
+              ]"
               @click="toggle({ stepIndex, instructionIndex, ingredientIndex })"
             >
-              <span class="mr-1">{{
-                getScaledAmount(
-                  parts[step.part][ingredient.name],
-                  ingredient.relativeAmount
-                )
+              <span class="me-1">{{
+                getScaledAmount(parts[step.part][ingredient.name], ingredient.relativeAmount)
               }}</span>
-              <span
-                class="mr-1"
-                v-if="parts[step.part][ingredient.name].unit"
-                >{{ parts[step.part][ingredient.name].unit }}</span
-              >
+              <span class="me-1" v-if="parts[step.part][ingredient.name].unit">{{
+                parts[step.part][ingredient.name].unit
+              }}</span>
               <strong>{{ parts[step.part][ingredient.name].name }}</strong>
             </li>
           </ul>
@@ -67,121 +58,116 @@
       </ul>
     </div>
     <div class="text-center mt-4">
-      <img alt="cake" class="complete-image" src="@/assets/icons/cake.svg" />
+      <img alt="cake" class="complete-image" :src="cakeIcon" />
     </div>
     <div class="text-center mt-4">
-      <b-link class="text-muted small" @click="reset()">
-        <BIconXCircle class="mr-1" />Rezept zurücksetzen
-      </b-link>
+      <button
+        type="button"
+        class="btn btn-link btn-sm text-muted p-0 text-decoration-none"
+        @click="reset()"
+      >
+        <i class="bi bi-x-circle me-1"></i>Rezept zurücksetzen
+      </button>
     </div>
   </div>
 </template>
 
-<script>
-import { mapGetters, mapState, mapMutations } from "vuex";
-import PanSelect from "@/components/PanSelect";
+<script setup>
+import { computed } from 'vue'
+import { usePansStore } from '@/stores/pans'
+import { useRecipeStore } from '@/stores/recipe'
+import PanSelect from '@/components/PanSelect.vue'
+import preparationIcon from '@/assets/icons/preparation.svg'
+import bellIcon from '@/assets/icons/bell.svg'
+import cakeIcon from '@/assets/icons/cake.svg'
 
-export default {
-  name: "PreparationView",
-  metaInfo: {
-    title: "Zubereitung",
-  },
-  components: {
-    PanSelect,
-  },
-  computed: {
-    ...mapState("pans", ["pans", { selectedPanIndex: "selected" }]),
-    ...mapState("recipe", {
-      recipeSteps: "steps",
-      recipeIngredients: "ingredients",
-      recipePan: "pan",
-    }),
-    ...mapGetters("pans", ["selectedPan"]),
-    ...mapGetters("recipe", ["checked"]),
-    parts() {
-      const ingredientsByPart = this.recipeIngredients.reduce(
-        (parts, ingredient) => {
-          if (!parts[ingredient.part]) {
-            parts[ingredient.part] = {};
-          }
-          parts[ingredient.part][ingredient.name] = ingredient;
-          return parts;
-        },
-        {}
-      );
+const pansStore = usePansStore()
+const recipeStore = useRecipeStore()
 
-      for (const part of this.recipeSteps) {
-        for (const { ingredients } of part.instructions) {
-          if (!ingredients) continue;
-          for (const ingredient of ingredients) {
-            if (ingredient.addsTo) {
-              const originalIngredient =
-                ingredientsByPart[part.part][ingredient.name];
-              if (!ingredientsByPart[part.part][ingredient.addsTo]) {
-                ingredientsByPart[part.part][ingredient.addsTo] = {
-                  name: ingredient.addsTo,
-                  amount: 0,
-                  unit: "g",
-                  part: part.part,
-                  scalesWith: originalIngredient.scalesWith,
-                };
-              }
-              const addsToIngredient =
-                ingredientsByPart[part.part][ingredient.addsTo];
-              let amount = originalIngredient.amount;
-              if (originalIngredient.unit !== "g") {
-                if (originalIngredient.amountInG) {
-                  amount = originalIngredient.amountInG;
-                }
-              }
-              addsToIngredient.amount +=
-                amount *
-                (ingredient.relativeAmount ? ingredient.relativeAmount : 1);
+const recipeSteps = computed(() => recipeStore.steps)
+const recipeIngredients = computed(() => recipeStore.ingredients)
+const recipePan = computed(() => recipeStore.pan)
+const selectedPan = computed(() => pansStore.selectedPan)
+
+const checked = (stepIndex, instructionIndex, ingredientIndex) => {
+  return recipeStore.getChecked(stepIndex, instructionIndex, ingredientIndex)
+}
+
+const parts = computed(() => {
+  const ingredientsByPart = recipeIngredients.value.reduce((partsMap, ingredient) => {
+    if (!partsMap[ingredient.part]) {
+      partsMap[ingredient.part] = {}
+    }
+    partsMap[ingredient.part][ingredient.name] = ingredient
+    return partsMap
+  }, {})
+
+  for (const part of recipeSteps.value) {
+    for (const { ingredients } of part.instructions) {
+      if (!ingredients) continue
+      for (const ingredient of ingredients) {
+        if (ingredient.addsTo) {
+          const originalIngredient = ingredientsByPart[part.part][ingredient.name]
+          if (!ingredientsByPart[part.part][ingredient.addsTo]) {
+            ingredientsByPart[part.part][ingredient.addsTo] = {
+              name: ingredient.addsTo,
+              amount: 0,
+              unit: 'g',
+              part: part.part,
+              scalesWith: originalIngredient.scalesWith,
             }
           }
+          const addsToIngredient = ingredientsByPart[part.part][ingredient.addsTo]
+          let amount = originalIngredient.amount
+          if (originalIngredient.unit !== 'g') {
+            if (originalIngredient.amountInG) {
+              amount = originalIngredient.amountInG
+            }
+          }
+          addsToIngredient.amount +=
+            amount * (ingredient.relativeAmount ? ingredient.relativeAmount : 1)
         }
       }
+    }
+  }
 
-      return ingredientsByPart;
-    },
-  },
-  methods: {
-    ...mapMutations("recipe", ["toggle", "reset"]),
-    getScaledAmount: function (ingredient, relativeAmount) {
-      let amount = ingredient.amount * (relativeAmount ? relativeAmount : 1);
-      if (ingredient.scalesWith === "volume") {
-        const getVolume = (diameter, height) =>
-          0.25 * diameter * diameter * height;
-        const recipePanVolume = getVolume(
-          this.recipePan.diameter,
-          this.recipePan.height
-        );
-        const panVolume = getVolume(
-          this.selectedPan.diameter,
-          this.selectedPan.height
-        );
-        amount *= panVolume / recipePanVolume;
-      } else if (ingredient.scalesWith === "area") {
-        const getArea = (diameter) => 0.25 * diameter * diameter;
-        const recipePanArea = getArea(this.recipePan.diameter);
-        const panArea = getArea(this.selectedPan.diameter);
-        amount *= panArea / recipePanArea;
-      }
+  return ingredientsByPart
+})
 
-      return this.presentAmount(amount, ingredient.unit);
-    },
-    presentAmount(amount, unit) {
-      if (unit === "Prise" || amount > 5) {
-        return Math.round(amount);
-      }
-      return parseFloat(amount.toFixed(1));
-    },
-  },
-};
+function toggle(payload) {
+  recipeStore.toggle(payload)
+}
+
+function reset() {
+  recipeStore.reset()
+}
+
+function getScaledAmount(ingredient, relativeAmount) {
+  let amount = ingredient.amount * (relativeAmount ? relativeAmount : 1)
+  if (ingredient.scalesWith === 'volume') {
+    const getVolume = (d, h) => 0.25 * d * d * h
+    const recipePanVolume = getVolume(recipePan.value.diameter, recipePan.value.height)
+    const panVolume = getVolume(selectedPan.value.diameter, selectedPan.value.height)
+    amount *= panVolume / recipePanVolume
+  } else if (ingredient.scalesWith === 'area') {
+    const getArea = (d) => 0.25 * d * d
+    const recipePanArea = getArea(recipePan.value.diameter)
+    const panArea = getArea(selectedPan.value.diameter)
+    amount *= panArea / recipePanArea
+  }
+
+  return presentAmount(amount, ingredient.unit)
+}
+
+function presentAmount(amount, unit) {
+  if (unit === 'Prise' || amount > 5) {
+    return Math.round(amount)
+  }
+  return parseFloat(amount.toFixed(1))
+}
 </script>
 
 <style lang="scss" scoped>
-/*noinspection CssUnusedSymbol*/
 .instruction-checked,
 .ingredient-checked {
   text-decoration: line-through;
@@ -211,5 +197,9 @@ export default {
 .complete-image {
   width: 100px;
   height: 100px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 </style>

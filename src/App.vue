@@ -3,60 +3,46 @@
     <div id="app" class="pt-3 d-flex flex-column">
       <header>
         <h1 class="main-title">
-          <router-link to="/">{{ recipeName }}</router-link>
+          <RouterLink to="/">{{ recipeName }}</RouterLink>
         </h1>
         <nav class="text-center mb-4">
-          <router-link to="/ingredients">Zutaten</router-link>
+          <RouterLink to="/ingredients">Zutaten</RouterLink>
           <span class="mx-3">|</span>
-          <router-link to="/shopping-list">Einkaufsliste</router-link>
+          <RouterLink to="/shopping-list">Einkaufsliste</RouterLink>
           <span class="mx-3">|</span>
-          <router-link to="/preparation">Zubereitung</router-link>
+          <RouterLink to="/preparation">Zubereitung</RouterLink>
         </nav>
       </header>
-      <b-container class="px-4 flex-grow-1">
-        <router-view />
-      </b-container>
+      <div class="container px-4 flex-grow-1">
+        <RouterView />
+      </div>
       <footer class="footer text-center text-muted">
         <ContentDivider class="mb-0 mt-5" />
         Mit
-        <BIconHeart />
+        <i class="bi bi-heart"></i>
         von <a href="https://cipold.de" class="text-muted">Michael</a> für
         <a href="https://tatoryte.com" class="text-muted">Gryta</a> |
-        <router-link to="/info">Info</router-link>
+        <RouterLink to="/info">Info</RouterLink>
       </footer>
     </div>
   </div>
 </template>
 
-<script>
-import { mapState } from "vuex";
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import { computed, onBeforeMount } from 'vue'
+import { useRecipeStore } from '@/stores/recipe'
+import { usePansStore } from '@/stores/pans'
 
-export default {
-  name: "App",
-  metaInfo() {
-    return {
-      title: "Willkommen",
-      titleTemplate: "%s - " + this.recipeName,
-      htmlAttrs: {
-        lang: "de-DE",
-      },
-      meta: [
-        {
-          name: "description",
-          content:
-            'Rezepte-App für die Torte "Blaubeerwunder". Nie wieder Frust mit den Mengenangaben!',
-        },
-      ],
-    };
-  },
-  computed: {
-    ...mapState("recipe", { recipeName: "name" }),
-  },
-  beforeCreate() {
-    this.$store.commit("pans/initialize");
-    this.$store.commit("recipe/initialize");
-  },
-};
+const recipeStore = useRecipeStore()
+const pansStore = usePansStore()
+
+const recipeName = computed(() => recipeStore.name)
+
+onBeforeMount(() => {
+  pansStore.initialize()
+  recipeStore.initialize()
+})
 </script>
 
 <style lang="scss" scoped>
@@ -79,7 +65,7 @@ export default {
 }
 
 .main-title {
-  font-family: "Send Flowers", cursive;
+  font-family: 'Send Flowers', cursive;
   font-weight: bold;
   color: var(--primary);
   text-align: center;
@@ -92,7 +78,7 @@ export default {
 }
 
 nav {
-  font-family: "Send Flowers", cursive;
+  font-family: 'Send Flowers', cursive;
   font-weight: bold;
   font-size: 1.2rem;
   border-top: var(--light) solid 1px;
@@ -102,7 +88,7 @@ nav {
     font-weight: bold;
     color: var(--medium);
 
-    &.router-link-exact-active {
+    &.RouterLink-exact-active {
       color: var(--primary);
     }
   }

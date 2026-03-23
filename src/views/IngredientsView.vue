@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageIntro :image="require('@/assets/icons/ingredients.svg')">
+    <PageIntro :image="ingredientsIcon">
       Wähle deine Form - die Mengen aller<br />
       Zutaten werden automatisch angepasst.
     </PageIntro>
@@ -9,8 +9,9 @@
 
     <PanSelect class="mb-4" />
 
-    <b-card no-body>
-      <b-card-body
+    <div class="card">
+      <div
+        class="card-body m-1"
         :key="`part-${partIndex}`"
         v-for="(part, partIndex) in parts"
         :class="{ 'pt-0': partIndex }"
@@ -21,86 +22,71 @@
             :key="`ingredient-${ingredientIndex}`"
             v-for="(ingredient, ingredientIndex) in part.ingredients"
           >
-            <span class="mr-1">{{
-              getScaledAmount(
-                selectedPan.diameter,
-                selectedPan.height,
-                ingredient
-              )
+            <span class="me-1">{{
+              getScaledAmount(selectedPan.diameter, selectedPan.height, ingredient)
             }}</span>
-            <span class="mr-1" v-if="ingredient.unit">{{
-              ingredient.unit
-            }}</span>
+            <span class="me-1" v-if="ingredient.unit">{{ ingredient.unit }}</span>
             <strong>{{ ingredient.name }}</strong>
           </li>
         </ul>
-      </b-card-body>
-    </b-card>
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
-import { mapGetters, mapState } from "vuex";
-import PanSelect from "@/components/PanSelect";
+<script setup>
+import { computed } from 'vue'
+import { usePansStore } from '@/stores/pans'
+import { useRecipeStore } from '@/stores/recipe'
+import PanSelect from '@/components/PanSelect.vue'
+import ingredientsIcon from '@/assets/icons/ingredients.svg'
 
-export default {
-  name: "IngredientsView",
-  metaInfo: {
-    title: "Zutaten",
-  },
-  components: {
-    PanSelect,
-  },
-  computed: {
-    ...mapState("pans", ["pans"]),
-    ...mapState("recipe", {
-      recipePan: "pan",
-      recipeIngredients: "ingredients",
-    }),
-    ...mapGetters("pans", ["selectedPan"]),
-    parts() {
-      return this.recipeIngredients.reduce((parts, ingredient) => {
-        const part = ingredient.part;
-        if (!parts.find((p) => p.part === part)) {
-          parts.push({
-            part,
-            ingredients: [],
-          });
-        }
-        parts.find((p) => p.part === part).ingredients.push(ingredient);
-        return parts;
-      }, []);
-    },
-  },
-  methods: {
-    getScaledAmount: function (diameter, height, ingredient) {
-      let amount = ingredient.amount;
-      if (ingredient.scalesWith === "volume") {
-        const getVolume = (diameter, height) =>
-          0.25 * diameter * diameter * height;
-        const recipePanVolume = getVolume(
-          this.recipePan.diameter,
-          this.recipePan.height
-        );
-        const panVolume = getVolume(diameter, height);
-        amount *= panVolume / recipePanVolume;
-      } else if (ingredient.scalesWith === "area") {
-        const getArea = (diameter) => 0.25 * diameter * diameter;
-        const recipePanArea = getArea(this.recipePan.diameter);
-        const panArea = getArea(diameter);
-        amount *= panArea / recipePanArea;
-      }
+const pansStore = usePansStore()
+const recipeStore = useRecipeStore()
 
-      return this.presentAmount(amount, ingredient.unit);
-    },
-    presentAmount(amount, unit) {
-      if (unit === "Prise" || amount > 5) {
-        return Math.round(amount);
+const selectedPan = computed(() => pansStore.selectedPan)
+const recipePan = computed(() => recipeStore.pan)
+const recipeIngredients = computed(() => recipeStore.ingredients)
+
+const parts = computed(() => {
+  return recipeIngredients.value.reduce((parts, ingredient) => {
+    const partName = ingredient.part
+    let part = parts.find((p) => p.part === partName)
+    if (!part) {
+      part = {
+        part: partName,
+        ingredients: [],
       }
-      return parseFloat(amount.toFixed(1));
-    },
-  },
-};
+      parts.push(part)
+    }
+    part.ingredients.push(ingredient)
+    return parts
+  }, [])
+})
+
+function getScaledAmount(diameter, height, ingredient) {
+  let amount = ingredient.amount
+  if (ingredient.scalesWith === 'volume') {
+    const getVolume = (d, h) => 0.25 * d * d * h
+    const recipePanVolume = getVolume(recipePan.value.diameter, recipePan.value.height)
+    const panVolume = getVolume(diameter, height)
+    amount *= panVolume / recipePanVolume
+  } else if (ingredient.scalesWith === 'area') {
+    const getArea = (d) => 0.25 * d * d
+    const recipePanArea = getArea(recipePan.value.diameter)
+    const panArea = getArea(diameter)
+    amount *= panArea / recipePanArea
+  }
+
+  return presentAmount(amount, ingredient.unit)
+}
+
+function presentAmount(amount, unit) {
+  if (unit === 'Prise' || amount > 5) {
+    return Math.round(amount)
+  }
+  return parseFloat(amount.toFixed(1))
+}
 </script>
 
 <style scoped>

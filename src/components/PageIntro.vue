@@ -9,11 +9,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "PageIntro",
-  props: { image: String },
-};
+<script setup>
+defineProps({
+  image: String,
+})
 </script>
 
 <style scoped>

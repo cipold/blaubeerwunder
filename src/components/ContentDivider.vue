@@ -2,11 +2,7 @@
   <div class="divider"></div>
 </template>
 
-<script>
-export default {
-  name: "ContentDivider",
-};
-</script>
+<script setup></script>
 
 <style scoped>
 .divider {

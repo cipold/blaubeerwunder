@@ -1,66 +1,60 @@
 <template>
   <div>
-    <b-list-group>
-      <b-list-group-item button @click="allPansVisible = !allPansVisible">
+    <div class="list-group">
+      <button
+        type="button"
+        class="list-group-item list-group-item-action"
+        data-bs-toggle="collapse"
+        data-bs-target="#panSelectCollapse"
+      >
         <PanLine :pan="selectedPan" />
-      </b-list-group-item>
-    </b-list-group>
+      </button>
+    </div>
 
-    <b-collapse v-model="allPansVisible">
-      <b-list-group class="mt-3">
-        <b-list-group-item
+    <div id="panSelectCollapse" class="collapse">
+      <div class="list-group mt-3">
+        <button
+          type="button"
           v-for="pan in otherPans"
           :key="`pan-${pan.index}`"
-          button
-          @click="
-            select(pan.index);
-            allPansVisible = false;
-          "
+          class="list-group-item list-group-item-action"
+          @click="select(pan.index)"
+          data-bs-toggle="collapse"
+          data-bs-target="#panSelectCollapse"
         >
           <PanLine :pan="pan.pan" :active="false" />
-        </b-list-group-item>
-      </b-list-group>
+        </button>
+      </div>
       <div class="d-flex mt-1">
-        <router-link
-          class="text-muted small ml-auto align-self-center"
-          to="/pans"
-        >
-          <BIconPencil class="mr-1" />
+        <router-link class="text-muted small ms-auto align-self-center" to="/pans">
+          <i class="bi bi-pencil me-1"></i>
           anpassen
         </router-link>
       </div>
-    </b-collapse>
+    </div>
   </div>
 </template>
 
-<script>
-import { mapActions, mapGetters, mapState } from "vuex";
-import PanLine from "@/components/PanLine";
+<script setup>
+import { computed } from 'vue'
+import { usePansStore } from '@/stores/pans'
+import PanLine from '@/components/PanLine.vue'
 
-export default {
-  name: "PanSelect",
-  components: {
-    PanLine,
-  },
-  data() {
-    return {
-      allPansVisible: false,
-    };
-  },
-  computed: {
-    ...mapState("pans", ["pans"]),
-    ...mapGetters("pans", ["selectedPan"]),
-    otherPans() {
-      return this.pans
-        .map((pan, index) => ({
-          pan,
-          index,
-        }))
-        .filter(({ pan }) => pan !== this.selectedPan);
-    },
-  },
-  methods: {
-    ...mapActions("pans", ["select"]),
-  },
-};
+const pansStore = usePansStore()
+
+const selectedPan = computed(() => pansStore.selectedPan)
+const pans = computed(() => pansStore.pans)
+
+const otherPans = computed(() => {
+  return pans.value
+    .map((pan, index) => ({
+      pan,
+      index,
+    }))
+    .filter(({ pan }) => pan !== selectedPan.value)
+})
+
+function select(index) {
+  pansStore.select(index)
+}
 </script>
